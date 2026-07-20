@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Secret Venue — Photo Admin</title>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --ink:        #15101F;
+    --plum:       #241B38;
+    --gold:       #F2B33D;
+    --gold-deep:  #B97F14;
+    --gold-lite:  #FFF4DC;
+    --paper:      #FBF7F1;
+    --white:      #FFFFFF;
+    --slate:      #3D3651;
+    --muted:      #7C7490;
+    --border:     #E9E2D8;
+    --green:      #25D366;
+    --green-dark: #128C7E;
+    --rose:       #F0567A;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--paper); margin: 0; padding: 20px; color: var(--slate);
+  }
+  .wrap { max-width: 520px; margin: 0 auto; }
+  h1 {
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 21px;
+    color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 8px;
+  }
+  .sub { color: var(--muted); font-size: 13px; margin-bottom: 24px; line-height: 1.5; }
+  .card {
+    background: var(--white); border: 1px solid var(--border); border-radius: 16px;
+    padding: 20px; margin-bottom: 16px; box-shadow: 0 4px 16px rgba(21,16,31,0.05);
+  }
+  .btn {
+    background: var(--gold); color: var(--ink); border: none; border-radius: 12px;
+    padding: 13px 18px; font-weight: 700; font-size: 14px; cursor: pointer; width: 100%;
+    min-height: 48px; transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(242,179,61,0.35); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-outline {
+    background: var(--white); color: var(--gold-deep);
+    border: 1.5px solid var(--gold); box-shadow: none;
+  }
+  select, input[type=file] {
+    width: 100%; padding: 11px 12px; border: 1.5px solid var(--border); border-radius: 10px;
+    margin-bottom: 12px; font-size: 14px; font-family: 'Inter', sans-serif; color: var(--ink);
+    background: var(--white);
+  }
+  select:focus, input[type=file]:focus { outline: none; border-color: var(--gold); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+  .grid .item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 1; background: var(--border); }
+  .grid .item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .grid .item .del {
+    position: absolute; top: 5px; right: 5px; background: rgba(21,16,31,0.65); color: #fff;
+    border: none; border-radius: 50%; width: 25px; height: 25px; font-size: 12px; cursor: pointer;
+  }
+  .grid .item .lbl {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(0deg, rgba(21,16,31,0.75), transparent);
+    color: #fff; font-size: 10px; font-weight: 600; padding: 5px 7px;
+  }
+  .status { font-size: 13px; margin-top: 10px; font-weight: 500; }
+  .status.ok { color: var(--green-dark); }
+  .status.err { color: var(--rose); }
+  .whoami { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+  .section-lbl { font-weight: 700; color: var(--ink); font-size: 14px; margin-bottom: 2px; }
+  .count-lbl { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .empty-note { color: var(--muted); font-size: 13px; }
+  #loggedOut, #loggedIn, #forgotForm, #resetForm, #inviteForm { display: none; }
+  .field-input {
+    width: 100%; padding: 11px 12px; border: 1.5px solid var(--border); border-radius: 10px;
+    margin-bottom: 12px; font-size: 14px; font-family: 'Inter', sans-serif; color: var(--ink);
+    background: var(--white);
+  }
+  .field-input:focus { outline: none; border-color: var(--gold); }
+  .reel-item {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    background: var(--paper); border: 1px solid var(--border); border-radius: 10px;
+    padding: 10px 12px; font-size: 12.5px; color: var(--slate);
+  }
+  .reel-item a { color: var(--gold-deep); text-decoration: none; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .reel-item .del {
+    flex-shrink: 0; background: none; border: none; color: var(--rose);
+    font-size: 15px; cursor: pointer; padding: 2px 6px;
+  }
+  .link-btn {
+    background: none; border: none; color: var(--gold-deep); font-size: 13px;
+    font-weight: 600; cursor: pointer; padding: 0; text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📸 The Secret Venue — Photo Admin</h1>
+  <div class="sub">Upload, label, and remove gallery photos. Changes appear on the booking page within a minute.</div>
+
+  <div id="loggedOut" class="card">
+    <p style="margin-bottom:14px;">Please log in to manage photos.</p>
+    <button class="btn" onclick="netlifyIdentity.open('login')">Log In</button>
+    <div style="text-align:center; margin-top:12px;">
+      <button class="link-btn" onclick="showForgotForm()">Forgot password?</button>
+    </div>
+  </div>
+
+  <!-- Custom "request a reset email" form — talks to Netlify Identity's
+       plain REST API directly, no popup/iframe involved. -->
+  <div id="forgotForm" class="card">
+    <p style="margin-bottom:12px; font-size:14px;">Enter your email and we'll send a reset link.</p>
+    <input type="email" id="forgotEmail" class="field-input" placeholder="you@example.com"/>
+    <button class="btn" id="forgotBtn" onclick="submitForgotPassword()">Send Reset Link</button>
+    <div id="forgotStatus" class="status"></div>
+    <div style="text-align:center; margin-top:12px;">
+      <button class="link-btn" onclick="hideForgotForm()">Back to Log In</button>
+    </div>
+  </div>
+
+  <!-- Custom "first-time set your password" form — shown when the page
+       loads with #invite_token=... in the URL. Bypasses Netlify's own
+       invite popup entirely, same fix as the reset-password form below. -->
+  <div id="inviteForm" class="card">
+    <p style="margin-bottom:12px; font-size:14px;">Welcome! Set a password to finish setting up your account.</p>
+    <input type="password" id="invitePassword" class="field-input" placeholder="Choose a password (min 6 characters)"/>
+    <input type="password" id="invitePasswordConfirm" class="field-input" placeholder="Confirm password"/>
+    <button class="btn" id="inviteBtn" onclick="submitInvitePassword()">Set Password &amp; Continue</button>
+    <div id="inviteStatus" class="status"></div>
+  </div>
+
+  <!-- Custom "set a new password" form — shown when the page loads with
+       #recovery_token=... in the URL. Bypasses Netlify's own popup entirely,
+       since that iframe wasn't rendering reliably in some browsers. -->
+  <div id="resetForm" class="card">
+    <p style="margin-bottom:12px; font-size:14px;">Choose a new password.</p>
+    <input type="password" id="resetPassword" class="field-input" placeholder="New password (min 6 characters)"/>
+    <input type="password" id="resetPasswordConfirm" class="field-input" placeholder="Confirm new password"/>
+    <button class="btn" id="resetBtn" onclick="submitNewPassword()">Set New Password</button>
+    <div id="resetStatus" class="status"></div>
+  </div>
+
+  <div id="loggedIn" class="card">
+    <p id="whoami" class="whoami"></p>
+
+    <select id="label">
+      <option value="Screen 1">🎬 Screen 1</option>
+      <option value="Screen 2">🎥 Screen 2</option>
+      <option value="Terrace">🌇 Terrace</option>
+      <option value="Car Surprise">🚗 Car Surprise</option>
+    </select>
+    <input type="file" id="fileInput" accept="image/*" multiple/>
+    <div id="fileCount" style="font-size:12px; color:var(--muted); margin:-8px 0 12px;"></div>
+    <button class="btn" id="uploadBtn" onclick="uploadPhotos()">Upload Photo(s)</button>
+    <div id="uploadStatus" class="status"></div>
+
+    <div id="reelsCard" style="margin-top:22px; padding-top:18px; border-top:1px solid var(--border);">
+      <div class="section-lbl">Instagram Reels</div>
+      <div class="count-lbl">Shown on the booking page's Instagram section. Paste a link to any post or reel from @the_secret_venue.</div>
+      <input type="text" id="reelUrlInput" class="field-input" placeholder="https://www.instagram.com/reel/..."/>
+      <button class="btn" id="addReelBtn" onclick="addReel()">Add Reel</button>
+      <div id="reelStatus" class="status"></div>
+      <div id="reelList" style="margin-top:14px; display:flex; flex-direction:column; gap:8px;"></div>
+    </div>
+
+    <button class="btn btn-outline" style="margin-top:16px;" onclick="netlifyIdentity.logout()">Log Out</button>
+  </div>
+
+  <div class="card">
+    <div class="section-lbl">Current Gallery</div>
+    <div id="photoCount" class="count-lbl"></div>
+    <div id="gallery" class="grid"></div>
+  </div>
+</div>
+
+<script>
+  const GITHUB_OWNER  = "keymeat2025";
+  const GITHUB_REPO   = "demosecretvenue";
+  const GITHUB_BRANCH = "main";
+  const MANIFEST_URL_BASE = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/manifest.json`;
+  const MAX_PER_UPLOAD = 10;
+  const MAX_GALLERY_TOTAL = 100;
+  let currentPhotoCount = 0;
+
+  // ── CUSTOM PASSWORD RESET (bypasses Netlify's popup iframe entirely) ──
+  // Netlify Identity is backed by a plain REST API at /.netlify/identity/*
+  // on your own domain — same-origin, no third-party iframe, nothing for a
+  // browser extension or blocker to interfere with. We talk to it directly
+  // instead of relying on the widget's built-in recovery popup, which
+  // wasn't rendering reliably.
+  const IDENTITY_BASE = "/.netlify/identity";
+
+  function getHashParam(name) {
+    // Deliberately NOT using URLSearchParams here — it treats "+" as a
+    // literal space (form-encoding behavior), which silently corrupts any
+    // token that happens to contain a "+" character before we ever send it
+    // to Netlify. Plain split + decodeURIComponent leaves "+" alone.
+    const hash = window.location.hash.replace(/^#/, "");
+    const pair = hash.split("&").find((kv) => kv.startsWith(name + "="));
+    if (!pair) return null;
+    return decodeURIComponent(pair.slice(name.length + 1));
+  }
+
+  // Grab both tokens (if present) and strip them from the URL immediately,
+  // BEFORE netlifyIdentity.init() runs below — so the widget never sees
+  // either hash and never tries (and fails) to open its own popup for them.
+  // Our own forms take over instead.
+  const pendingRecoveryToken = getHashParam("recovery_token");
+  const pendingInviteToken = getHashParam("invite_token");
+  if (pendingRecoveryToken || pendingInviteToken) {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
+
+  async function verifyToken(type, token, password) {
+    const body = { type, token };
+    if (password) body.password = password; // required for invite/signup verification
+    const res = await fetch(`${IDENTITY_BASE}/verify`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      const bodyText = await res.text().catch(() => "");
+      throw new Error(`Server said (${res.status}): ${bodyText || "no details"}`);
+    }
+    return res.json(); // { access_token, user, ... }
+  }
+
+  async function setNewPasswordViaApi(accessToken, password) {
+    const res = await fetch(`${IDENTITY_BASE}/user`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + accessToken,
+      },
+      body: JSON.stringify({ password }),
+    });
+    if (!res.ok) throw new Error("Couldn't set the new password. Please request a new reset link.");
+    return res.json();
+  }
+
+  function showForgotForm() {
+    document.getElementById("loggedOut").style.display = "none";
+    document.getElementById("forgotForm").style.display = "block";
+  }
+  function hideForgotForm() {
+    document.getElementById("forgotForm").style.display = "none";
+    document.getElementById("loggedOut").style.display = "block";
+  }
+
+  async function submitForgotPassword() {
+    const email = document.getElementById("forgotEmail").value.trim();
+    const statusEl = document.getElementById("forgotStatus");
+    const btn = document.getElementById("forgotBtn");
+    if (!email) {
+      statusEl.textContent = "Enter your email first.";
+      statusEl.className = "status err";
+      return;
+    }
+    btn.disabled = true;
+    statusEl.textContent = "Sending...";
+    statusEl.className = "status";
+    try {
+      const res = await fetch(`${IDENTITY_BASE}/recover`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error("Couldn't send the reset email. Check the address and try again.");
+      statusEl.textContent = "Check your email for a reset link ✓";
+      statusEl.className = "status ok";
+    } catch (e) {
+      statusEl.textContent = e.message;
+      statusEl.className = "status err";
+    }
+    btn.disabled = false;
+  }
+
+  async function submitInvitePassword() {
+    const password = document.getElementById("invitePassword").value;
+    const confirm = document.getElementById("invitePasswordConfirm").value;
+    const statusEl = document.getElementById("inviteStatus");
+    const btn = document.getElementById("inviteBtn");
+
+    if (password.length < 6) {
+      statusEl.textContent = "Password must be at least 6 characters.";
+      statusEl.className = "status err";
+      return;
+    }
+    if (password !== confirm) {
+      statusEl.textContent = "Passwords don't match.";
+      statusEl.className = "status err";
+      return;
+    }
+
+    btn.disabled = true;
+    statusEl.textContent = "Setting up your account...";
+    statusEl.className = "status";
+    try {
+      // GoTrue's /verify endpoint requires the password to be included in
+      // THIS call for invite/signup tokens — there's no existing account
+      // to authorize a separate password-set request against yet (unlike
+      // recovery, where the account already exists).
+      await verifyToken("signup", pendingInviteToken, password);
+      statusEl.textContent = "Account ready ✓ Please log in below.";
+      statusEl.className = "status ok";
+      setTimeout(() => {
+        document.getElementById("inviteForm").style.display = "none";
+        document.getElementById("loggedOut").style.display = "block";
+      }, 1800);
+    } catch (e) {
+      statusEl.textContent = e.message;
+      statusEl.className = "status err";
+    }
+    btn.disabled = false;
+  }
+
+  async function submitNewPassword() {
+    const password = document.getElementById("resetPassword").value;
+    const confirm = document.getElementById("resetPasswordConfirm").value;
+    const statusEl = document.getElementById("resetStatus");
+    const btn = document.getElementById("resetBtn");
+
+    if (password.length < 6) {
+      statusEl.textContent = "Password must be at least 6 characters.";
+      statusEl.className = "status err";
+      return;
+    }
+    if (password !== confirm) {
+      statusEl.textContent = "Passwords don't match.";
+      statusEl.className = "status err";
+      return;
+    }
+
+    btn.disabled = true;
+    statusEl.textContent = "Setting new password...";
+    statusEl.className = "status";
+    try {
+      const { access_token } = await verifyToken("recovery", pendingRecoveryToken);
+      await setNewPasswordViaApi(access_token, password);
+      statusEl.textContent = "Password updated ✓ You can log in now.";
+      statusEl.className = "status ok";
+      setTimeout(() => {
+        document.getElementById("resetForm").style.display = "none";
+        document.getElementById("loggedOut").style.display = "block";
+      }, 1800);
+    } catch (e) {
+      statusEl.textContent = e.message;
+      statusEl.className = "status err";
+    }
+    btn.disabled = false;
+  }
+
+  if (pendingRecoveryToken) {
+    document.getElementById("resetForm").style.display = "block";
+  }
+  if (pendingInviteToken) {
+    document.getElementById("inviteForm").style.display = "block";
+  }
+
+  netlifyIdentity.on("init", (user) => { if (!pendingRecoveryToken && !pendingInviteToken) { user ? showLoggedIn(user) : showLoggedOut(); } });
+  netlifyIdentity.on("login", (user) => { showLoggedIn(user); netlifyIdentity.close(); });
+  netlifyIdentity.on("logout", () => showLoggedOut());
+  netlifyIdentity.init();
+
+  function showLoggedIn(user) {
+    document.getElementById("loggedOut").style.display = "none";
+    document.getElementById("forgotForm").style.display = "none";
+    document.getElementById("resetForm").style.display = "none";
+    document.getElementById("inviteForm").style.display = "none";
+    document.getElementById("loggedIn").style.display = "block";
+    document.getElementById("whoami").textContent = "Logged in as " + user.email;
+    loadGallery();
+    loadReelsList();
+  }
+  function showLoggedOut() {
+    document.getElementById("loggedOut").style.display = "block";
+    document.getElementById("loggedIn").style.display = "none";
+    document.getElementById("forgotForm").style.display = "none";
+    document.getElementById("resetForm").style.display = "none";
+    document.getElementById("inviteForm").style.display = "none";
+  }
+
+  async function loadGallery() {
+    const grid = document.getElementById("gallery");
+    grid.innerHTML = "Loading...";
+    try {
+      const res = await fetch(MANIFEST_URL_BASE + "?t=" + Date.now());
+      const data = await res.json();
+      const photos = data.photos || [];
+      currentPhotoCount = photos.length;
+      grid.innerHTML = "";
+      photos.forEach((p) => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `<img src="${p.url}"/><span class="lbl">${p.label}</span><button class="del" onclick="deletePhoto('${p.id}')">✕</button>`;
+        grid.appendChild(div);
+      });
+      if (photos.length === 0) grid.innerHTML = "<p class='empty-note'>No photos yet.</p>";
+
+      const countEl = document.getElementById("photoCount");
+      if (countEl) countEl.textContent = `${photos.length} / ${MAX_GALLERY_TOTAL} photos used`;
+    } catch (e) {
+      grid.innerHTML = "<p style='color:var(--rose); font-size:13px;'>Couldn't load gallery.</p>";
+    }
+  }
+
+  // ── INSTAGRAM REELS MANAGEMENT ──
+  const REELS_MANIFEST_URL = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/reels.json`;
+  const MAX_REELS = 12;
+  let currentReelCount = 0;
+
+  async function loadReelsList() {
+    const list = document.getElementById("reelList");
+    list.innerHTML = "Loading...";
+    try {
+      const res = await fetch(REELS_MANIFEST_URL + "?t=" + Date.now());
+      const data = res.ok ? await res.json() : { reels: [] };
+      const reels = data.reels || [];
+      currentReelCount = reels.length;
+      list.innerHTML = "";
+      reels.forEach((r) => {
+        const row = document.createElement("div");
+        row.className = "reel-item";
+        row.innerHTML = `<a href="${r.url}" target="_blank" rel="noopener">${r.url.replace("https://www.instagram.com", "")}</a><button class="del" onclick="deleteReel('${r.id}')">✕</button>`;
+        list.appendChild(row);
+      });
+      if (reels.length === 0) list.innerHTML = "<p class='empty-note'>No reels added yet.</p>";
+    } catch (e) {
+      list.innerHTML = "<p style='color:var(--rose); font-size:13px;'>Couldn't load reels.</p>";
+    }
+  }
+
+  async function addReel() {
+    const input = document.getElementById("reelUrlInput");
+    const statusEl = document.getElementById("reelStatus");
+    const btn = document.getElementById("addReelBtn");
+    const url = input.value.trim();
+
+    if (!url) {
+      statusEl.textContent = "Paste a reel or post link first.";
+      statusEl.className = "status err";
+      return;
+    }
+    if (currentReelCount >= MAX_REELS) {
+      statusEl.textContent = `You can have up to ${MAX_REELS} reels — remove one before adding another.`;
+      statusEl.className = "status err";
+      return;
+    }
+
+    btn.disabled = true;
+    statusEl.textContent = "Adding...";
+    statusEl.className = "status";
+    try {
+      const user = netlifyIdentity.currentUser();
+      const jwt = await user.jwt();
+      const res = await fetch("/.netlify/functions/add-reel", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + jwt },
+        body: JSON.stringify({ url }),
+      });
+      const bodyText = await res.text();
+      let result;
+      try { result = JSON.parse(bodyText); }
+      catch (parseErr) { throw new Error(`Server said (${res.status}): ${bodyText.slice(0, 200) || "empty response"}`); }
+      if (!res.ok) throw new Error(result.error || "Couldn't add that reel");
+      statusEl.textContent = "Reel added ✓ (may take a minute to appear)";
+      statusEl.className = "status ok";
+      input.value = "";
+      setTimeout(loadReelsList, 1200);
+    } catch (e) {
+      statusEl.textContent = e.message;
+      statusEl.className = "status err";
+    }
+    btn.disabled = false;
+  }
+
+  async function deleteReel(id) {
+    if (!confirm("Remove this reel from the site?")) return;
+    try {
+      const user = netlifyIdentity.currentUser();
+      const jwt = await user.jwt();
+      const res = await fetch("/.netlify/functions/delete-reel", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + jwt },
+        body: JSON.stringify({ id }),
+      });
+      if (!res.ok) {
+        const bodyText = await res.text().catch(() => "");
+        throw new Error(`Server said (${res.status}): ${bodyText.slice(0, 200) || "empty response"}`);
+      }
+      loadReelsList();
+    } catch (e) {
+      alert("Error: " + e.message);
+    }
+  }
+
+  document.getElementById("fileInput").addEventListener("change", (e) => {
+    const n = e.target.files.length;
+    const el = document.getElementById("fileCount");
+    el.textContent = n > 0 ? `${n} photo${n > 1 ? "s" : ""} selected` : "";
+  });
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function uploadOne(file, label, user) {
+    const contentBase64 = await fileToBase64(file);
+    // user.jwt() refreshes the token if it's expired — reading
+    // user.token.access_token directly can send a stale token, which is why
+    // uploads were failing with 401 Unauthorized after being logged in a while.
+    const jwt = await user.jwt();
+    const res = await fetch("/.netlify/functions/upload-photo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + jwt,
+      },
+      body: JSON.stringify({ filename: file.name, contentBase64, label }),
+    });
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.error || "Upload failed");
+    return result;
+  }
+
+  async function uploadPhotos() {
+    const fileInput = document.getElementById("fileInput");
+    const label = document.getElementById("label").value;
+    const statusEl = document.getElementById("uploadStatus");
+    const btn = document.getElementById("uploadBtn");
+    const files = Array.from(fileInput.files);
+
+    if (files.length === 0) {
+      statusEl.textContent = "Choose at least one photo first.";
+      statusEl.className = "status err";
+      return;
+    }
+    if (files.length > MAX_PER_UPLOAD) {
+      statusEl.textContent = `Please select ${MAX_PER_UPLOAD} photos or fewer at a time (you picked ${files.length}).`;
+      statusEl.className = "status err";
+      return;
+    }
+    const remaining = MAX_GALLERY_TOTAL - currentPhotoCount;
+    if (remaining <= 0) {
+      statusEl.textContent = `Gallery is full (${MAX_GALLERY_TOTAL} photo limit). Delete some old photos before adding more.`;
+      statusEl.className = "status err";
+      return;
+    }
+    if (files.length > remaining) {
+      statusEl.textContent = `Only ${remaining} slot${remaining > 1 ? "s" : ""} left before the ${MAX_GALLERY_TOTAL}-photo limit. Select ${remaining} or fewer.`;
+      statusEl.className = "status err";
+      return;
+    }
+
+    btn.disabled = true;
+    const user = netlifyIdentity.currentUser();
+    let succeeded = 0;
+    for (let i = 0; i < files.length; i++) {
+      statusEl.textContent = `Uploading ${i + 1} of ${files.length}...`;
+      statusEl.className = "status";
+      try {
+        await uploadOne(files[i], label, user);
+        succeeded++;
+      } catch (e) {
+        statusEl.textContent = `Stopped at photo ${i + 1}: ${e.message}`;
+        statusEl.className = "status err";
+        break;
+      }
+    }
+    if (succeeded === files.length) {
+      statusEl.textContent = `Uploaded ${succeeded} photo${succeeded > 1 ? "s" : ""} ✓ (may take a minute to appear)`;
+      statusEl.className = "status ok";
+    }
+    fileInput.value = "";
+    document.getElementById("fileCount").textContent = "";
+    btn.disabled = false;
+    setTimeout(loadGallery, 1500);
+  }
+
+  async function deletePhoto(photoId) {
+    if (!confirm("Remove this photo?")) return;
+    try {
+      const user = netlifyIdentity.currentUser();
+      const jwt = await user.jwt(); // auto-refreshes an expired token
+      const res = await fetch("/.netlify/functions/delete-photo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + jwt,
+        },
+        body: JSON.stringify({ photoId }),
+      });
+      if (!res.ok) throw new Error("Delete failed");
+      loadGallery();
+    } catch (e) {
+      alert("Error: " + e.message);
+    }
+  }
+</script>
+</body>
+</html>

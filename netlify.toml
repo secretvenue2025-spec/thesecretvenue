@@ -1,0 +1,12 @@
+[build]
+  functions = "netlify/functions"
+  publish = "."
+
+# Short photo links: /p/<filename> proxies the actual image from GitHub, so WhatsApp
+# (and anyone else) sees "demosecretvenue.netlify.app/p/xxx.webp" instead of the long
+# raw.githubusercontent.com URL, while still serving the real image for link previews.
+[[redirects]]
+  from = "/p/*"
+  to = "https://raw.githubusercontent.com/keymeat2025/demosecretvenue/main/photos/:splat"
+  status = 200
+  force = true

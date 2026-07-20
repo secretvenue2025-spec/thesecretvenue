@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Vellore's 1st exclusive private theatre & celebration spot. The Secret Venue — private celebration space for birthdays, surprises, anniversaries & private theatre. 1800+ celebrations hosted. Book on WhatsApp in under a minute."/>
+  <meta property="og:title" content="The Secret Venue · Private Celebrations in Vellore"/>
+  <meta property="og:description" content="Vellore's 1st exclusive private theatre & celebration spot. Book on WhatsApp in under a minute."/>
+  <meta property="og:image" content="assets/logo-full.png"/>
+  <title>The Secret Venue · Private Celebrations in Vellore</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #15101F;   /* deep plum-black */
+      --plum:       #241B38;   /* dark surface */
+      --plum-soft:  #2F2450;
+      --gold:       #F2B33D;   /* candle gold */
+      --gold-deep:  #B97F14;
+      --gold-lite:  #FFF4DC;
+      --rose:       #F0567A;   /* balloon rose */
+      --rose-lite:  #FFE9EF;
+      --paper:      #FBF7F1;   /* warm off-white */
+      --white:      #FFFFFF;
+      --slate:      #3D3651;
+      --muted:      #7C7490;
+      --border:     #E9E2D8;
+      --green:      #25D366;
+      --green-dark: #128C7E;
+      --radius:     16px;
+      --shadow-sm:  0 4px 14px rgba(21,16,31,0.08);
+      --shadow-md:  0 12px 34px rgba(21,16,31,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--slate);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    button { font-family: 'Inter', sans-serif; }
+
+    .display { font-family: 'Fraunces', serif; }
+
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+
+    /* ══════════ THEMED SCROLLBAR ══════════ */
+    html {
+      scrollbar-width: thin;                 /* Firefox */
+      scrollbar-color: var(--gold) var(--ink);
+    }
+    ::-webkit-scrollbar { width: 10px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--paper); }
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 20px;
+      border: 2px solid var(--paper);
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold-deep); }
+    /* dark surfaces (hero, filmstrip, lightbox) get a matching dark track */
+    .hero ::-webkit-scrollbar-track,
+    .filmstrip-wrap ::-webkit-scrollbar-track,
+    .lightbox ::-webkit-scrollbar-track { background: var(--ink); }
+    .hero ::-webkit-scrollbar-thumb,
+    .filmstrip-wrap ::-webkit-scrollbar-thumb,
+    .lightbox ::-webkit-scrollbar-thumb { border-color: var(--ink); }
+
+    /* ══════════ PROMO TICKER ══════════ */
+    .promo-banner {
+      background: linear-gradient(90deg, #92400E, #D97706, var(--gold), #D97706, #92400E);
+      overflow: hidden; white-space: nowrap;
+      padding: 7px 0;
+    }
+    .promo-track {
+      display: inline-flex; gap: 44px; width: max-content;
+      animation: promoScroll 26s linear infinite;
+    }
+    .promo-track span { color: #fff; font-size: 12.5px; font-weight: 600; letter-spacing: 0.02em; }
+    .promo-track .dot { color: rgba(255,255,255,0.55); }
+    @keyframes promoScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ══════════ NAV ══════════ */
+    .nav {
+      position: sticky; top: 0; z-index: 60;
+      background: rgba(21,16,31,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      padding: 10px 14px;
+      display: flex; flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: 8px;
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif; font-weight: 700; font-size: 15.5px;
+      color: var(--white); text-decoration: none; letter-spacing: 0.01em;
+      display: flex; align-items: center; gap: 7px; flex-shrink: 1; min-width: 0;
+      overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+    }
+    .nav-logo .mask { height: 28px; width: auto; flex-shrink: 0; }
+    .nav-links { display: none; gap: 28px; }
+    .nav-links a { color: rgba(255,255,255,0.78); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--ink); text-decoration: none;
+      padding: 8px 14px; border-radius: 30px; font-size: 12.5px; font-weight: 700;
+      flex-shrink: 0; white-space: nowrap; margin-left: auto;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(242,179,61,0.4); }
+
+    /* ── MOBILE HAMBURGER + CARD MENU ──
+       Inline on the same row as the logo and Book Now (not its own row),
+       so the nav bar height never changes on mobile. It's kept compact
+       (36px) specifically to leave room next to Book Now. */
+    .menu-wrap { position: relative; flex-shrink: 0; }
+    .hamburger {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--plum);
+      border: 1.5px solid rgba(242,179,61,0.45);
+      box-shadow: 0 6px 16px rgba(21,16,31,0.35);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .hamburger span {
+      width: 17px; height: 2px; background: var(--gold); border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .hamburger.open { background: var(--gold); }
+    .hamburger.open span { background: var(--ink); }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    .mob-menu {
+      position: absolute; top: calc(100% + 12px); right: 0; z-index: 79;
+      background: rgba(36,27,56,0.94);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(242,179,61,0.28);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      display: flex; flex-direction: column;
+      min-width: 236px; padding: 7px;
+      opacity: 0; transform: translateY(-10px) scale(0.96);
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    .mob-menu.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    .mob-menu a {
+      display: flex; align-items: center; gap: 13px;
+      padding: 12px 12px; border-radius: 13px; min-height: 48px;
+      font-size: 14.5px; font-weight: 700;
+      color: #fff; text-decoration: none;
+    }
+    .mob-menu a:active, .mob-menu a:hover { background: rgba(242,179,61,0.14); }
+    .mm-icon {
+      width: 34px; height: 34px; border-radius: 11px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ══════════ HERO ══════════ */
+    .hero {
+      position: relative;
+      background: linear-gradient(165deg, var(--ink) 0%, var(--plum) 55%, var(--plum-soft) 100%);
+      color: var(--white);
+      overflow: hidden;
+    }
+    /* Two stacked photo layers shown at FULL opacity — all darkening happens
+       in the veil above them. Crossfading between two opaque layers is
+       seamless (no mid-fade brightness dip), and full opacity keeps the
+       photo crisp instead of hazy. No zoom: transforms on animating layers
+       soften the texture. */
+    .hero-photo {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 2.2s ease-in-out;
+    }
+    .hero-photo.show { opacity: 1; }
+    .hero-veil {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(21,16,31,0.78) 0%, rgba(21,16,31,0.58) 45%, rgba(21,16,31,0.95) 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1120px; margin: 0 auto;
+      padding: 64px 22px 130px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(242,179,61,0.35);
+      border-radius: 30px; padding: 6px 15px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
+      color: var(--gold-lite); margin-bottom: 20px;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .hero-eyebrow .live-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: #4ADE80; position: relative;
+    }
+    .hero-eyebrow .live-dot::after {
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
+      background: #4ADE80; animation: ping 1.9s ease-out infinite;
+    }
+    @keyframes ping { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(2.6); opacity: 0; } }
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: clamp(34px, 7.5vw, 62px);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin: 0 auto 16px;
+      max-width: 15ch;
+    }
+    .hero h1 em {
+      font-style: italic; font-weight: 500;
+      background: linear-gradient(100deg, #FFD98A, var(--gold), #FFC55C);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-kicker {
+      font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--gold); margin: -6px 0 14px;
+    }
+    .hero-sub {
+      font-size: clamp(14.5px, 2.5vw, 17px);
+      color: rgba(255,255,255,0.82);
+      max-width: 46ch; margin: 0 auto 26px;
+    }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 26px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      border: none; cursor: pointer; text-decoration: none;
+      border-radius: 14px; font-weight: 700;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-wa {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: var(--white);
+      padding: 15px 26px; font-size: 15.5px;
+      box-shadow: 0 10px 26px rgba(37,211,102,0.35);
+    }
+    .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(37,211,102,0.45); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.1); color: var(--white);
+      border: 1px solid rgba(255,255,255,0.28);
+      padding: 15px 24px; font-size: 15px;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.18); }
+
+    .hero-proof {
+      display: flex; flex-wrap: wrap; gap: 10px 22px; justify-content: center;
+      font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 500;
+    }
+    .hero-proof b { color: var(--gold); font-weight: 800; }
+
+    /* ══════════ FILMSTRIP (signature: the celebration wall) ══════════ */
+    .filmstrip-wrap {
+      position: relative; z-index: 3;
+      margin-top: -92px;
+      padding: 0 0 8px;
+      overflow: hidden;
+    }
+    .filmstrip {
+      display: flex; gap: 16px; width: max-content;
+      padding: 18px 22px 26px;
+      animation: stripSlide 38s linear infinite;
+    }
+    .filmstrip.paused, .filmstrip:active { animation-play-state: paused; }
+    @keyframes stripSlide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .polaroid {
+      flex: 0 0 auto;
+      background: var(--white);
+      padding: 8px 8px 30px;
+      border-radius: 6px;
+      box-shadow: 0 10px 26px rgba(21,16,31,0.22);
+      cursor: pointer; position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .polaroid:nth-child(odd)  { transform: rotate(-2.4deg); }
+    .polaroid:nth-child(even) { transform: rotate(2deg) translateY(6px); }
+    .polaroid:hover {
+      transform: rotate(0) scale(1.06) translateY(-6px);
+      box-shadow: 0 18px 40px rgba(242,179,61,0.35);
+      z-index: 4;
+    }
+    .polaroid img {
+      width: 138px; height: 158px; object-fit: cover; border-radius: 3px;
+      background: var(--border);
+    }
+    .polaroid .p-label {
+      position: absolute; left: 0; right: 0; bottom: 7px;
+      text-align: center;
+      font-family: 'Fraunces', serif; font-style: italic;
+      font-size: 12.5px; color: var(--slate);
+    }
+    .filmstrip-hint {
+      text-align: center; font-size: 12px; color: var(--muted);
+      padding: 0 22px 6px; letter-spacing: 0.02em;
+    }
+
+    /* ══════════ SECTION SCAFFOLD ══════════ */
+    section { padding: 58px 20px; }
+    .section-inner { max-width: 1120px; margin: 0 auto; }
+    .eyebrow {
+      color: var(--gold-deep); font-weight: 700; font-size: 12.5px;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(26px, 4.5vw, 38px); color: var(--ink);
+      line-height: 1.15; margin-bottom: 10px; letter-spacing: -0.01em;
+    }
+    .section-lead { color: var(--muted); font-size: 15px; max-width: 56ch; }
+    .center { text-align: center; }
+    .center .section-lead { margin: 0 auto; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    /* ══════════ GALLERY ══════════ */
+    #gallery { background: var(--white); }
+    .filter-row {
+      display: flex; gap: 8px; overflow-x: auto;
+      padding: 22px 0 12px; margin: 0 -20px; padding-left: 20px; padding-right: 20px;
+      scrollbar-width: thin;
+    }
+    .filter-row::-webkit-scrollbar { height: 6px; }
+    .filter-chip {
+      flex: 0 0 auto;
+      border: 1.5px solid var(--border); background: var(--paper);
+      color: var(--slate); border-radius: 30px;
+      padding: 9px 16px; font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: all 0.18s ease;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .filter-chip:hover { border-color: var(--gold); }
+    .filter-chip.active {
+      background: var(--ink); border-color: var(--ink); color: var(--gold-lite);
+    }
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+      margin-top: 18px;
+    }
+    .g-card {
+      position: relative; border-radius: var(--radius); overflow: hidden;
+      cursor: pointer; background: var(--border);
+      aspect-ratio: 4 / 5;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .g-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .g-card img { width: 100%; height: 100%; object-fit: cover; }
+    .g-card .g-tag {
+      position: absolute; left: 10px; bottom: 10px;
+      background: rgba(21,16,31,0.72); color: var(--gold-lite);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      border-radius: 20px; padding: 5px 12px;
+      font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em;
+    }
+    .g-card .g-check {
+      position: absolute; top: 10px; right: 10px;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--gold); color: var(--ink);
+      display: none; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+    .g-card.selected .g-check { display: flex; }
+    .g-card.selected { outline: 3px solid var(--gold); outline-offset: -3px; }
+    .gallery-empty { text-align: center; color: var(--muted); padding: 40px 0; font-size: 14px; }
+
+    /* ══════════ PACKAGES ══════════
+       Shows what's included, deliberately never a rupee figure — pricing
+       varies by date/season and the owner confirms it directly on WhatsApp. */
+    #packages { background: var(--white); }
+    .pricing-note {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--gold-lite); color: var(--gold-deep);
+      border-radius: 30px; padding: 7px 15px; margin-top: 14px;
+      font-size: 12.5px; font-weight: 700;
+    }
+    .package-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+    .package-card {
+      background: var(--paper); border: 1px solid var(--border);
+      border-radius: 20px; padding: 22px 20px 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column;
+    }
+    .package-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
+    .package-icon {
+      flex-shrink: 0; width: 46px; height: 46px; border-radius: 13px;
+      background: var(--gold-lite); display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .package-card h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 17.5px; color: var(--ink); }
+    .package-tag { font-size: 12px; color: var(--muted); font-weight: 600; margin-top: 2px; }
+    .package-list { list-style: none; margin: 14px 0 6px; display: flex; flex-direction: column; gap: 8px; }
+    .package-list li { display: flex; align-items: center; gap: 9px; font-size: 13.5px; color: var(--slate); }
+    .package-list li::before { content: "✓"; color: var(--gold-deep); font-weight: 800; flex-shrink: 0; }
+    .package-ask {
+      align-self: flex-start; font-size: 11.5px; font-weight: 700; color: var(--gold-deep);
+      background: var(--gold-lite); border-radius: 20px; padding: 4px 11px; margin-top: 6px;
+    }
+    .package-subheading {
+      font-size: 12.5px; font-weight: 800; color: var(--gold-deep);
+      margin: 10px 0 6px; padding-top: 12px; border-top: 1px dashed var(--border);
+    }
+    .package-note {
+      font-size: 12.5px; font-style: italic; color: var(--muted);
+      margin: 4px 0 2px;
+    }
+
+    /* ══════════ WHY US ══════════ */
+    .why-grid {
+      display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 28px;
+    }
+    .why-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .why-icon {
+      flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px;
+      background: var(--gold-lite); display: flex; align-items: center; justify-content: center;
+      font-size: 21px;
+    }
+    .why-card h3 { font-size: 15.5px; color: var(--ink); margin-bottom: 4px; font-weight: 700; }
+    .why-card p { font-size: 13.5px; color: var(--muted); }
+
+    /* ══════════ TESTIMONIALS ══════════ */
+    #stories { background: var(--white); }
+    .stories-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 28px; }
+    .story-card {
+      background: var(--paper); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px;
+      position: relative;
+    }
+    .story-card .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 10px; }
+    .story-card blockquote { font-size: 14.5px; color: var(--slate); line-height: 1.65; }
+    .story-card figcaption { margin-top: 14px; font-size: 13px; font-weight: 700; color: var(--ink); }
+    .story-card figcaption span { display: block; font-weight: 500; color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+    /* ══════════ INSTAGRAM ══════════ */
+    #instagram { background: var(--paper); }
+    .ig-follow-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);
+      color: var(--white); text-decoration: none;
+      border-radius: 30px; padding: 10px 20px; margin-top: 16px;
+      font-size: 13.5px; font-weight: 700;
+      transition: transform 0.15s ease;
+    }
+    .ig-follow-btn:hover { transform: translateY(-1px); }
+    .ig-strip {
+      display: flex; gap: 16px; overflow-x: auto; margin-top: 28px;
+      padding: 4px 4px 10px; scroll-snap-type: x proximity;
+    }
+    .ig-card {
+      flex: 0 0 auto; scroll-snap-align: start;
+      width: 300px; max-width: 84vw; min-height: 400px;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      background: var(--white);
+      position: relative;
+    }
+    .ig-card .instagram-media { margin: 0 !important; min-width: 0 !important; width: 100% !important; }
+    .ig-skeleton {
+      position: absolute; inset: 0; z-index: 1;
+      background: var(--paper); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.3s ease;
+    }
+    .ig-skeleton.hide { opacity: 0; pointer-events: none; }
+    .ig-skel-shimmer {
+      position: absolute; inset: 0;
+      background: linear-gradient(100deg, var(--paper) 30%, var(--border) 50%, var(--paper) 70%);
+      background-size: 200% 100%;
+      animation: igShimmer 1.4s ease-in-out infinite;
+    }
+    @keyframes igShimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+    /* ══════════ STATS BAND ══════════ */
+    .stats-band {
+      background: linear-gradient(160deg, var(--ink) 0%, var(--plum) 60%, var(--plum-soft) 100%);
+      color: var(--white); text-align: center;
+    }
+    .stats-tagline {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 500;
+      font-size: clamp(24px, 4vw, 34px); margin-bottom: 34px; color: var(--gold-lite);
+    }
+    .stats-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 860px; margin: 0 auto; }
+    .stat {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius); padding: 20px 10px;
+    }
+    .stat .num { font-family: 'Fraunces', serif; color: var(--gold); font-size: 32px; font-weight: 700; }
+    .stat .lbl { color: rgba(255,255,255,0.7); font-size: 12.5px; margin-top: 4px; }
+
+    /* ══════════ BOOKING ══════════ */
+    #book { background: var(--paper); }
+    .book-layout { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 8px; }
+    .book-card {
+      background: var(--white); border-radius: 22px;
+      box-shadow: var(--shadow-md); border: 1px solid var(--border);
+      padding: 26px 22px 28px;
+    }
+    .book-steps { display: flex; flex-direction: column; gap: 22px; }
+    .step-label {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 11px;
+    }
+    .step-num {
+      width: 21px; height: 21px; border-radius: 50%; flex-shrink: 0;
+      background: var(--gold-lite); color: var(--gold-deep);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800;
+    }
+    .step.done .step-num { background: var(--gold); color: var(--ink); }
+
+    /* ── SPACE TABS + PHOTO PREVIEW (inside Step 1) ── */
+    /* 2x2 grid by default so all 4 spaces are visible without horizontal
+       scroll or shrinking text below a comfortable tap size on mobile —
+       becomes a single row once there's enough width (~380px+). */
+    .space-tab-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; margin-bottom: 12px; }
+    .space-tab {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      background: var(--paper); border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 8px 10px; min-height: 40px;
+      font-size: 12px; font-weight: 700; color: var(--slate); cursor: pointer;
+      transition: all 0.16s ease; white-space: nowrap;
+    }
+    .space-tab:hover { border-color: var(--gold); }
+    .space-tab.active { background: var(--ink); border-color: var(--ink); color: var(--gold-lite); }
+    .space-preview-strip { display: flex; gap: 8px; margin-bottom: 14px; }
+    .space-preview-strip img {
+      width: 72px; height: 72px; border-radius: 12px; object-fit: cover;
+      background: var(--border); cursor: pointer; flex-shrink: 0;
+      transition: transform 0.15s ease;
+    }
+    .space-preview-strip img:hover { transform: scale(1.05); }
+    .space-preview-empty { font-size: 12px; color: var(--muted); padding: 8px 0; }
+
+    .occasion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .form-link-back {
+      display: inline-block; margin-top: 10px;
+      font-size: 12.5px; font-weight: 600; color: var(--gold-deep);
+      text-decoration: underline; text-underline-offset: 2px;
+    }
+    .chip {
+      padding: 13px 11px;
+      border: 1.5px solid var(--border); border-radius: 13px;
+      font-size: 13px; font-weight: 600; color: var(--slate);
+      cursor: pointer; background: var(--white);
+      display: flex; align-items: center; gap: 8px;
+      transition: all 0.16s ease; text-align: left;
+      min-height: 48px;
+    }
+    .chip .ci { font-size: 19px; flex-shrink: 0; }
+    .chip:hover { border-color: var(--gold); background: var(--gold-lite); }
+    .chip.active {
+      border-color: var(--gold); background: var(--gold-lite); color: var(--gold-deep);
+      box-shadow: 0 0 0 3px rgba(242,179,61,0.22);
+    }
+
+    .guest-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .guest-btn {
+      flex: 1; min-width: 58px; padding: 11px 6px; min-height: 44px;
+      border: 1.5px solid var(--border); border-radius: 11px;
+      font-size: 12.5px; font-weight: 600; color: var(--muted);
+      background: var(--white); cursor: pointer; transition: all 0.16s ease;
+    }
+    .guest-btn:hover, .guest-btn.active {
+      border-color: var(--gold); background: var(--gold-lite); color: var(--gold-deep);
+    }
+
+    .field { margin-bottom: 13px; }
+    .field label { display: block; font-size: 12.5px; font-weight: 600; color: var(--slate); margin-bottom: 6px; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 13px 14px; min-height: 48px;
+      border: 1.5px solid var(--border); border-radius: 12px;
+      font-size: 15px; font-family: 'Inter', sans-serif;
+      color: var(--ink); outline: none; background: var(--white);
+      transition: border-color 0.16s, box-shadow 0.16s;
+      appearance: none; resize: none;
+    }
+    .field textarea { min-height: 66px; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--gold); box-shadow: 0 0 0 3px rgba(242,179,61,0.18);
+    }
+    .field input::placeholder, .field textarea::placeholder { color: #C4BDB2; }
+    .field.error input, .field.error select { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(240,86,122,0.15); }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237C7490' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+    }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    /* ── IN-FORM ADD-ONS PICKER (always visible, multi-select) ── */
+    .addon-toggle-wrap { margin-bottom: 14px; }
+    .addon-picker-label { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .addon-picker { margin-top: 0; }
+    .addon-chip-grid { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 4px; }
+    .addon-chip-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 8px 13px; min-height: 40px;
+      font-size: 12.5px; font-weight: 600; color: var(--slate); cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .addon-chip-btn .ci { width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .addon-chip-btn:hover { border-color: var(--gold); }
+    .addon-chip-btn.active { background: var(--gold-lite); border-color: var(--gold); color: var(--gold-deep); }
+
+    .ref-strip { display: none; flex-wrap: wrap; gap: 7px; margin: 4px 0 12px; }
+    .ref-strip.show { display: flex; }
+    .ref-chip {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--gold-lite); border: 1px solid var(--gold);
+      border-radius: 20px; padding: 4px 6px 4px 4px;
+      font-size: 11.5px; font-weight: 700; color: var(--gold-deep);
+    }
+    .ref-chip img { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
+    .ref-chip button { background: none; border: none; color: var(--gold-deep); cursor: pointer; font-size: 14px; padding: 0 3px; line-height: 1; }
+
+    .preview {
+      display: none;
+      background: #F0FBF3; border: 1.5px solid #BCE8C8;
+      border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;
+      font-size: 12.5px; color: #226A3C; line-height: 1.65; white-space: pre-wrap;
+    }
+    .preview.show { display: block; }
+    .preview-lbl {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--green-dark); margin-bottom: 5px;
+    }
+
+    .terms-row {
+      display: flex; align-items: flex-start; gap: 9px;
+      font-size: 13px; color: var(--muted); margin: 4px 0 16px; cursor: pointer;
+    }
+    .terms-row input { margin-top: 2px; flex-shrink: 0; width: 17px; height: 17px; accent-color: var(--gold); cursor: pointer; }
+    .terms-row a { color: var(--gold-deep); font-weight: 700; text-decoration: underline; }
+    .terms-row.error span { color: var(--rose); }
+
+    .cta {
+      width: 100%; padding: 16px; min-height: 54px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      color: var(--white); border: none; border-radius: 14px;
+      font-size: 15.5px; font-weight: 800; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      box-shadow: 0 10px 24px rgba(37,211,102,0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(37,211,102,0.42); }
+    .cta:active { transform: translateY(0); }
+    .note { margin-top: 12px; font-size: 12px; color: var(--muted); text-align: center; }
+
+    .book-aside { display: none; }
+    .aside-card {
+      background: var(--ink); color: var(--white);
+      border-radius: 22px; padding: 30px 28px;
+      position: sticky; top: 92px;
+    }
+    .aside-card h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; margin-bottom: 14px; color: var(--gold-lite); }
+    .aside-card ul { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+    .aside-card li { display: flex; gap: 11px; font-size: 13.5px; color: rgba(255,255,255,0.8); line-height: 1.55; }
+    .aside-card li .ai { flex-shrink: 0; font-size: 17px; }
+    .aside-contact { border-top: 1px solid rgba(255,255,255,0.14); padding-top: 20px; font-size: 13px; color: rgba(255,255,255,0.7); }
+    .aside-contact a { color: var(--gold); font-weight: 700; text-decoration: none; }
+    .aside-contact .addr { margin-top: 10px; line-height: 1.6; }
+    .aside-contact .addr a { color: rgba(255,255,255,0.85); font-weight: 500; text-decoration: underline; }
+
+    /* ══════════ FOOTER ══════════ */
+    .site-footer {
+      background: var(--ink); color: rgba(255,255,255,0.55);
+      text-align: center; padding: 26px 18px 240px;
+      font-size: 12px; display: flex; flex-direction: column; align-items: center; gap: 7px;
+    }
+    .site-footer a { color: rgba(255,255,255,0.8); text-decoration: underline; }
+    .footer-logo { height: 46px; width: auto; margin-bottom: 6px; }
+
+    /* ══════════ STICKY MOBILE BOOK BAR ══════════ */
+    .sticky-bar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
+      background: rgba(21,16,31,0.94);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(242,179,61,0.3);
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      display: flex; align-items: center; gap: 12px;
+      transform: translateY(110%); transition: transform 0.3s ease;
+    }
+    .sticky-bar.show { transform: translateY(0); }
+    .sb-info { flex: 1; min-width: 0; }
+    .sb-rating { color: var(--gold); font-size: 12.5px; font-weight: 800; }
+    .sb-sub { color: rgba(255,255,255,0.65); font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sb-btn {
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: var(--white); text-decoration: none; border: none; cursor: pointer;
+      border-radius: 12px; padding: 12px 20px; min-height: 46px;
+      font-size: 14px; font-weight: 800;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+
+    /* ══════════ FLOATING CONTACT (desktop) ══════════ */
+    .float-contact {
+      display: flex;
+      position: fixed; right: 16px; bottom: 112px; z-index: 65;
+      flex-direction: column; gap: 12px; align-items: flex-end;
+    }
+    .fc-btn {
+      height: 54px; min-width: 54px; border-radius: 30px; padding: 0 15px;
+      display: flex; align-items: center; justify-content: center; gap: 0;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      transition: transform 0.15s ease, gap 0.25s ease;
+    }
+    .fc-btn:hover { transform: scale(1.05); gap: 10px; }
+    .fc-label {
+      color: #fff; font-size: 14px; font-weight: 700; white-space: nowrap;
+      max-width: 0; overflow: hidden; opacity: 0;
+      transition: max-width 0.25s ease, opacity 0.2s ease;
+    }
+    .fc-btn:hover .fc-label { max-width: 150px; opacity: 1; }
+    .fc-wa { background: var(--green); animation: waPulse 2.6s ease-in-out infinite; }
+    @keyframes waPulse {
+      0%,100% { box-shadow: 0 8px 24px rgba(0,0,0,0.25), 0 0 0 0 rgba(37,211,102,0.5); }
+      50%     { box-shadow: 0 8px 24px rgba(0,0,0,0.25), 0 0 0 11px rgba(37,211,102,0); }
+    }
+    .fc-call-group { position: relative; }
+    .fc-call { background: var(--plum); }
+    .fc-popover {
+      position: absolute; bottom: 64px; right: 0;
+      display: flex; flex-direction: column; gap: 8px;
+      opacity: 0; pointer-events: none; transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .fc-call-group:hover .fc-popover, .fc-popover.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .fc-popover-option {
+      background: var(--white); color: var(--ink);
+      border: 1px solid var(--border); border-radius: 24px;
+      padding: 11px 18px; font-size: 13px; font-weight: 700;
+      box-shadow: var(--shadow-sm); text-decoration: none; cursor: pointer;
+      white-space: nowrap; text-align: left; display: block;
+    }
+    .fc-popover-option:hover { background: var(--gold-lite); }
+
+    /* ══════════ LIGHTBOX ══════════ */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(21,16,31,0.95);
+      align-items: center; justify-content: center; padding: 18px;
+      flex-direction: column; gap: 14px;
+    }
+    .lightbox.show { display: flex; }
+    .lightbox img {
+      max-width: 100%; max-height: 62vh;
+      border-radius: 12px; box-shadow: 0 14px 60px rgba(0,0,0,0.55);
+    }
+    .lb-meta { text-align: center; color: var(--white); }
+    .lb-title { font-family: 'Fraunces', serif; font-size: 19px; }
+    .lb-count { color: rgba(255,255,255,0.6); font-size: 12px; margin-top: 3px; }
+    .lb-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .lb-book {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: var(--white); border: none; border-radius: 24px;
+      padding: 12px 22px; min-height: 46px; font-size: 14px; font-weight: 800; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .lb-ref {
+      background: rgba(255,255,255,0.12); color: var(--white);
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 24px;
+      padding: 12px 20px; min-height: 46px; font-size: 14px; font-weight: 700; cursor: pointer;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .lb-ref.selected { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+    .lightbox-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.24);
+      color: var(--white); font-size: 19px; cursor: pointer;
+    }
+    .lightbox-nav {
+      position: absolute; top: 42%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.24);
+      color: var(--white); font-size: 21px; cursor: pointer;
+    }
+    .lightbox-prev { left: 10px; } .lightbox-next { right: 10px; }
+
+    /* ══════════ TERMS MODAL ══════════ */
+    .terms-modal {
+      display: none; position: fixed; inset: 0; z-index: 998;
+      background: rgba(21,16,31,0.55);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .terms-modal.show { display: flex; }
+    .terms-box {
+      background: var(--white); border-radius: 18px;
+      max-width: 480px; width: 100%; max-height: 80vh;
+      display: flex; flex-direction: column; overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .terms-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 17px 20px; border-bottom: 1px solid var(--border);
+      font-weight: 800; color: var(--ink); font-size: 15px;
+      font-family: 'Fraunces', serif;
+    }
+    .terms-header button { background: none; border: none; font-size: 17px; cursor: pointer; color: var(--muted); padding: 4px; }
+    .terms-body { padding: 18px 20px; overflow-y: auto; font-size: 13.5px; color: var(--slate); line-height: 1.65; }
+    .terms-body p { margin-bottom: 12px; }
+
+    /* ══════════ AUTH OVERLAY (password reset / invite acceptance) ══════════
+       Hidden by default and only ever shown if the page loads with
+       #recovery_token= or #invite_token= in the URL — i.e. only right after
+       someone clicks a Netlify Identity email link. Invisible to normal
+       visitors. Talks to Netlify's plain REST API directly rather than
+       relying on the widget's iframe popup. */
+    .auth-modal {
+      display: none; position: fixed; inset: 0; z-index: 998;
+      background: rgba(21,16,31,0.72);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .auth-modal.show { display: flex; }
+    .auth-box {
+      background: var(--white); border-radius: 20px;
+      max-width: 400px; width: 100%;
+      padding: 28px 26px; box-shadow: var(--shadow-md);
+    }
+    .auth-box h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; color: var(--ink); margin-bottom: 8px; }
+    .auth-box p { font-size: 13.5px; color: var(--muted); margin-bottom: 16px; line-height: 1.55; }
+    .auth-input {
+      width: 100%; padding: 12px 14px; min-height: 46px;
+      border: 1.5px solid var(--border); border-radius: 12px;
+      font-size: 14.5px; font-family: 'Inter', sans-serif; color: var(--ink);
+      margin-bottom: 11px; outline: none;
+    }
+    .auth-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(242,179,61,0.18); }
+    .auth-btn {
+      width: 100%; padding: 13px; min-height: 48px;
+      background: var(--gold); color: var(--ink); border: none; border-radius: 12px;
+      font-size: 14.5px; font-weight: 800; cursor: pointer;
+    }
+    .auth-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .auth-status { font-size: 13px; margin-top: 10px; font-weight: 500; }
+    .auth-status.ok { color: var(--green-dark); }
+    .auth-status.err { color: var(--rose); }
+
+    /* ══════════ TOAST ══════════ */
+    .toast {
+      position: fixed; left: 50%; bottom: 92px; transform: translateX(-50%) translateY(20px);
+      z-index: 1000; background: var(--ink); color: var(--gold-lite);
+      border: 1px solid rgba(242,179,61,0.4);
+      border-radius: 30px; padding: 11px 20px;
+      font-size: 13.5px; font-weight: 600;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      box-shadow: var(--shadow-md);
+      max-width: calc(100vw - 32px); text-align: center;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ══════════ CONFETTI ══════════ */
+    .confetti-piece {
+      position: fixed; top: -20px; z-index: 9999; pointer-events: none;
+      border-radius: 2px; animation: confettiFall linear forwards;
+    }
+    @keyframes confettiFall { to { transform: translateY(110vh) rotate(720deg); opacity: 0.3; } }
+
+    /* ══════════ DESKTOP ══════════ */
+    @media (min-width: 640px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .package-grid { grid-template-columns: repeat(2, 1fr); }
+      .stories-grid { grid-template-columns: repeat(3, 1fr); }
+      .stats-row { grid-template-columns: repeat(4, 1fr); }
+      .occasion-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      section { padding: 84px 32px; }
+      .nav-links { display: flex; }
+      .menu-wrap { display: none; }
+      .hero-inner { padding: 96px 32px 160px; }
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .package-grid { grid-template-columns: repeat(3, 1fr); }
+      .nav-logo .mask { height: 34px; }
+      .space-tab-row { grid-template-columns: repeat(4, 1fr); }
+      .filter-row { justify-content: center; margin: 0; padding-left: 0; padding-right: 0; flex-wrap: wrap; overflow: visible; }
+      .book-layout { grid-template-columns: 0.9fr 1.1fr; gap: 44px; align-items: start; }
+      .book-aside { display: block; }
+      .book-card { padding: 36px 38px 38px; }
+      .site-footer { padding-bottom: 26px; }
+      .sticky-bar { display: none; }
+      .float-contact { right: 22px; bottom: 22px; }
+      .polaroid img { width: 168px; height: 190px; }
+    }
+
+    /* ══════════ REDUCED MOTION ══════════ */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .promo-track, .filmstrip, .fc-wa, .hero-eyebrow .live-dot::after, .hero-photo { animation: none !important; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PROMO TICKER -->
+<div class="promo-banner" aria-hidden="true">
+  <div class="promo-track" id="promoTrack"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top"><img class="mask" src="assets/logo-icon.png" alt="The Secret Venue"/>The Secret Venue</a>
+    <div class="nav-links">
+      <a href="#gallery">Celebrations</a>
+      <a href="#packages">Packages</a>
+      <a href="#why">Why Us</a>
+      <a href="#stories">Reviews</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=The+Secret+Venue+Door+No.55+KBS+Building+Katpadi-Chittoor+High+Road+Gandhi+Nagar+Vellore+632006" target="_blank" rel="noopener">📍 Vellore</a>
+    </div>
+    <a href="#book" class="nav-cta">Book Now</a>
+    <!-- flex-basis:100% forces this onto its own row below Book Now whenever
+         nav-inner wraps (i.e. on mobile) — no fixed pixel offsets needed. -->
+    <div class="menu-wrap">
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobMenu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="mob-menu" id="mobMenu">
+        <a href="#gallery" onclick="closeMobileMenu()">
+          <span class="mm-icon" style="background:#DCFCE7;color:#15803D;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </span>Gallery
+        </a>
+        <a href="#packages" onclick="closeMobileMenu()">
+          <span class="mm-icon" style="background:#EDE9FE;color:#6D28D9;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.58 1.41l9.59 9.59a2 2 0 002.83 0l4.35-4.35a2 2 0 000-2.83z"/><circle cx="7.5" cy="7.5" r="1"/></svg>
+          </span>Packages
+        </a>
+        <a href="#why" onclick="closeMobileMenu()">
+          <span class="mm-icon" style="background:#FFE4E6;color:#BE123C;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </span>Why Us
+        </a>
+        <a href="#stories" onclick="closeMobileMenu()">
+          <span class="mm-icon" style="background:#FEF3C7;color:#B45309;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+          </span>Reviews
+        </a>
+        <a href="#book" onclick="closeMobileMenu()">
+          <span class="mm-icon" style="background:#FFE9C7;color:#C2410C;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2.5"/><path d="M3 9h18M8 2.5v3M16 2.5v3"/><path d="M8.5 14l2 2 4-4"/></svg>
+          </span>Book Now
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=The+Secret+Venue+Door+No.55+KBS+Building+Katpadi-Chittoor+High+Road+Gandhi+Nagar+Vellore+632006" target="_blank" rel="noopener">
+          <span class="mm-icon" style="background:#FEE2E2;color:#DC2626;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </span>Gandhi Nagar, Vellore
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-photo" id="heroPhotoA"></div>
+  <div class="hero-photo" id="heroPhotoB"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="live-dot"></span> Taking bookings this week · Gandhi Nagar, Vellore</div>
+    <h1>Your people. Your party. <em>Your secret.</em></h1>
+    <p class="hero-kicker">Vellore's 1st exclusive private theatre &amp; celebration spot</p>
+    <p class="hero-sub">A fully private celebration space for birthdays, surprises, anniversaries and movie nights — decorated for you, exclusively yours for the evening.</p>
+    <div class="hero-ctas">
+      <a href="#book" class="btn btn-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.87-1.24-4.74-4.12-4.89-4.31-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 1.99.88 2.14.07.14.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.19-.27.37-.22.62-.13.26.09 1.64.77 1.92.91.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+        Book on WhatsApp
+      </a>
+      <a href="#gallery" class="btn btn-ghost">See real celebrations ↓</a>
+    </div>
+    <div class="hero-proof">
+      <span>⭐ <b>4.9</b> · <b id="reviewCount">201</b>+ reviews</span>
+      <span>🎉 <b>1800+</b> celebrations hosted</span>
+      <span>💬 Replies within <b>1 hour</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- FILMSTRIP: real celebration polaroids -->
+<div class="filmstrip-wrap">
+  <div class="filmstrip" id="filmstrip" aria-label="Photos from recent celebrations"></div>
+</div>
+<div class="filmstrip-hint">Photos from real celebrations here — tap any to see it up close ✨</div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="center reveal">
+      <div class="eyebrow">Real Setups · Real Parties</div>
+      <h2 class="section-title">See each space before you choose.<br/>We'll recreate it for you.</h2>
+      <p class="section-lead">Browse by space — Screen 1, Screen 2, Terrace, or a Car Surprise — and find a look you love. Open it and tap <b>“Book this setup”</b> — it goes straight into your enquiry.</p>
+    </div>
+    <div class="filter-row" id="filterRow" role="tablist" aria-label="Filter by space"></div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+    <div class="gallery-empty" id="galleryEmpty" style="display:none;">No photos in this category yet — check back soon!</div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="section-inner">
+    <div class="center reveal">
+      <div class="eyebrow">Curated Packages</div>
+      <h2 class="section-title">A setup for every kind of celebration</h2>
+      <p class="section-lead">Here's exactly what each package includes. Pricing shifts a little with date and season, so we confirm it directly when you reach out — nothing hidden, just quoted live.</p>
+      <div class="pricing-note">💬 Ask us for current pricing on WhatsApp</div>
+    </div>
+    <div class="package-grid" id="packageGrid"></div>
+    <div class="center" style="margin-top:10px;">
+      <a href="#spaces" class="form-link-back">Ready to book? Pick your space and occasion ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-inner">
+    <div class="center reveal">
+      <div class="eyebrow">Why Celebrate Here</div>
+      <h2 class="section-title">Just show up. We handle the rest.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-icon">🎭</div><div><h3>Fully private &amp; exclusive</h3><p>No shared halls, no strangers. The whole venue is yours — just your people.</p></div></div>
+      <div class="why-card reveal"><div class="why-icon">🎨</div><div><h3>Themed décor, done for you</h3><p>Balloon arches, neon backdrops and lighting matched to your exact occasion.</p></div></div>
+      <div class="why-card reveal"><div class="why-icon">💬</div><div><h3>Book in one WhatsApp message</h3><p>Check availability and confirm your slot in minutes — no back-and-forth calls.</p></div></div>
+      <div class="why-card reveal"><div class="why-icon">💰</div><div><h3>Clear, budget-friendly pricing</h3><p>Transparent packages with décor and coordination included. No hidden costs.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="stories">
+  <div class="section-inner">
+    <div class="center reveal">
+      <div class="eyebrow">From Our Guests</div>
+      <h2 class="section-title">The moments people keep talking about</h2>
+    </div>
+    <div class="stories-grid">
+      <figure class="story-card reveal">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Booked a surprise for my wife's birthday. The team kept everything secret till the last minute and her reaction was priceless. Décor was exactly like the photo we chose.”</blockquote>
+        <figcaption>Karthik R. <span>Surprise Birthday · Vellore</span></figcaption>
+      </figure>
+      <figure class="story-card reveal">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“We did our first anniversary here — private movie, candle-light setup, everything arranged over WhatsApp in one evening. Genuinely hassle-free.”</blockquote>
+        <figcaption>Divya &amp; Ashwin <span>Anniversary · Katpadi</span></figcaption>
+      </figure>
+      <figure class="story-card reveal">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Hosted our team's quarterly celebration. Clean space, on-time setup, and the coordinator handled everything so we could just enjoy.”</blockquote>
+        <figcaption>Priya M. <span>Corporate Event · VIT Area</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="instagram">
+  <div class="section-inner">
+    <div class="center reveal">
+      <div class="eyebrow">Straight From Instagram</div>
+      <h2 class="section-title">See the celebrations in motion</h2>
+      <p class="section-lead">Real reels from real events at The Secret Venue.</p>
+      <a href="https://www.instagram.com/the_secret_venue" target="_blank" rel="noopener" class="ig-follow-btn">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.2.27 3 .58a6 6 0 012.2 1.4 6 6 0 011.4 2.2c.3.8.5 1.8.6 3 .05 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.27 2.2-.58 3a6 6 0 01-1.4 2.2 6 6 0 01-2.2 1.4c-.8.3-1.8.5-3 .6-1.3.05-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2.2-.27-3-.58a6 6 0 01-2.2-1.4 6 6 0 01-1.4-2.2c-.3-.8-.5-1.8-.6-3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.27-2.2.58-3a6 6 0 011.4-2.2 6 6 0 012.2-1.4c.8-.3 1.8-.5 3-.6C8.4 2.2 8.8 2.2 12 2.2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm6.4-8.4a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg>
+        Follow @the_secret_venue
+      </a>
+    </div>
+    <div class="ig-strip" id="igStrip" tabindex="0" role="group" aria-label="Instagram reels — scroll horizontally to see more"></div>
+    <div class="center">
+      <a href="#book" class="form-link-back">Loved this? Book your celebration ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<section class="stats-band">
+  <div class="section-inner">
+    <div class="stats-tagline reveal">Your story. Our stage.</div>
+    <div class="stats-row">
+      <div class="stat reveal"><div class="num">1800+</div><div class="lbl">Celebrations Hosted</div></div>
+      <div class="stat reveal"><div class="num">8</div><div class="lbl">Occasion Types</div></div>
+      <div class="stat reveal"><div class="num">4.9★</div><div class="lbl">Average Rating</div></div>
+      <div class="stat reveal"><div class="num" id="vlrClock">--:--</div><div class="lbl">Vellore, IN · Open Now</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="book">
+  <div class="section-inner">
+    <div class="center reveal">
+      <div class="eyebrow">Reserve Your Date</div>
+      <h2 class="section-title">Book in under a minute</h2>
+      <p class="section-lead">Three quick steps — your details open in WhatsApp, and we confirm availability within the hour.</p>
+    </div>
+
+    <div class="book-layout">
+      <!-- Left: sticky info card (desktop only) -->
+      <aside class="book-aside">
+        <div class="aside-card">
+          <h3>What's included</h3>
+          <ul>
+            <li><span class="ai">🎈</span>Occasion-themed décor, set up before you arrive</li>
+            <li><span class="ai">🕐</span>Open 11 AM – 10 PM, all days of the week</li>
+            <li><span class="ai">🤝</span>A coordinator on hand through your event</li>
+            <li><span class="ai">📎</span>Attach reference photos from the gallery — we recreate the look</li>
+          </ul>
+          <div class="aside-contact">
+            Prefer to talk? <a href="tel:+917200369191">+91 72003 69191</a>
+            <div class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=The+Secret+Venue+Door+No.55+KBS+Building+Katpadi-Chittoor+High+Road+Gandhi+Nagar+Vellore+632006" target="_blank" rel="noopener">Door No.55, KBS Building, Katpadi-Chittoor High Road, Gandhi Nagar, Vellore 632006</a></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right: booking card -->
+      <div class="book-card" id="bookCard">
+        <div class="book-steps">
+
+          <div class="step" id="stepOccasion">
+            <div class="step-label"><span class="step-num">1</span> Pick your space &amp; occasion</div>
+            <div class="space-tab-row" id="spaceTabRow"></div>
+            <div class="space-preview-strip" id="spacePreviewStrip"></div>
+            <div class="occasion-grid" id="serviceGrid"></div>
+            <a href="#packages" class="form-link-back">Not sure which package fits? See what's included ↑</a>
+          </div>
+
+          <div class="step" id="stepGuests">
+            <div class="step-label"><span class="step-num">2</span> How many guests?</div>
+            <div class="guest-row" id="guestRow"></div>
+          </div>
+
+          <div class="step" id="stepDetails">
+            <div class="step-label"><span class="step-num">3</span> Your details</div>
+            <div class="field" id="fName">
+              <label for="custName">Your name</label>
+              <input type="text" id="custName" placeholder="e.g. Arjun Krishnan" autocomplete="name"/>
+            </div>
+            <div class="row2">
+              <div class="field" id="fDate">
+                <label for="eventDate">Event date</label>
+                <input type="date" id="eventDate"/>
+              </div>
+              <div class="field" id="fTime">
+                <label for="eventTime">Preferred time</label>
+                <select id="eventTime">
+                  <option value="">Select slot</option>
+                  <option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option>
+                  <option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option>
+                  <option>5:00 PM</option><option>6:00 PM</option><option>7:00 PM</option><option>8:00 PM</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="specialReq">Special requests (optional)</label>
+              <textarea id="specialReq" rows="2" placeholder="e.g. Rose entry, fog entry, extra photo prints..."></textarea>
+            </div>
+            <div class="addon-toggle-wrap">
+              <div class="addon-picker-label">Select your add-ons</div>
+              <div class="addon-picker open" id="addonPicker">
+                <div class="addon-chip-grid" id="addonChipGrid"></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="ref-strip" id="refStrip"></div>
+            <div class="preview" id="preview">
+              <div class="preview-lbl">Your WhatsApp message preview</div>
+              <span id="previewText"></span>
+            </div>
+            <label class="terms-row" id="termsRow">
+              <input type="checkbox" id="termsCheck"/>
+              <span>I agree to the <a href="javascript:void(0)" onclick="openTerms(event)">Terms &amp; Conditions</a></span>
+            </label>
+            <button class="cta" onclick="book()">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Book via WhatsApp
+            </button>
+            <p class="note">Opens WhatsApp with your details filled in · We confirm within 1 hour 🎉</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <img src="assets/logo-icon.png" alt="The Secret Venue" class="footer-logo"/>
+  <div>The Secret Venue · Door No.55, KBS Building, Katpadi-Chittoor High Road, Gandhi Nagar, Vellore 632006</div>
+  <div>Open 11 AM – 10 PM, all days · <a href="tel:+917200369191">+91 72003 69191</a></div>
+  <div><a href="javascript:void(0)" onclick="openTerms(event)">Terms &amp; Conditions</a> · © 2026 The Secret Venue</div>
+</footer>
+
+<!-- STICKY MOBILE BOOK BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sb-info">
+    <div class="sb-rating">⭐ 4.9 · 1800+ celebrations</div>
+    <div class="sb-sub">Replies within 1 hour on WhatsApp</div>
+  </div>
+  <a href="#book" class="sb-btn">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+    Book Now
+  </a>
+</div>
+
+<!-- FLOATING CONTACT (desktop) -->
+<div class="float-contact">
+  <a href="https://wa.me/917200369191?text=Hi!%20I'd%20like%20to%20know%20more%20about%20The%20Secret%20Venue" target="_blank" rel="noopener" class="fc-btn fc-wa" aria-label="WhatsApp us">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.87-1.24-4.74-4.12-4.89-4.31-.14-.19-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 1.99.88 2.14.07.14.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.19-.27.37-.22.62-.13.26.09 1.64.77 1.92.91.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+    <span class="fc-label">WhatsApp Us</span>
+  </a>
+  <div class="fc-call-group" id="fcCallGroup">
+    <div class="fc-popover" id="fcCallPopover">
+      <a href="tel:+917200369191" class="fc-popover-option">📞 Call Now</a>
+      <button class="fc-popover-option" onclick="copyPhoneFloat()"><span id="floatCopyLabel">📋 Copy Number</span></button>
+    </div>
+    <button class="fc-btn fc-call" onclick="toggleCallPopover(event)" aria-label="Call options">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="#fff" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.01l-2.2 2.21z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- TERMS MODAL -->
+<div class="terms-modal" id="termsModal" role="dialog" aria-modal="true" aria-label="Terms and Conditions">
+  <div class="terms-box">
+    <div class="terms-header"><span>Terms &amp; Conditions</span><button onclick="closeTerms()" aria-label="Close">✕</button></div>
+    <div class="terms-body">
+      <p><b>1. Advance Payment</b><br/>A minimum of 50% advance payment is required to confirm the booking.</p>
+      <p><b>2. Cancellation &amp; Date Change Policy</b><br/>• The advance amount is non-refundable for last-minute cancellations.<br/>• Customers must inform at least 2 days in advance for cancellations or date changes.</p>
+      <p><b>3. Balloon Policy</b><br/>Bursting balloons inside the venue is strictly prohibited. A fine of ₹200 will be charged if violated.</p>
+      <p><b>4. Party Poppers</b><br/>Use of party poppers is strictly not allowed. A fine of ₹500 will be imposed if used.</p>
+      <p><b>5. Damage Policy</b><br/>Any damage to property or décor — including furniture and seating — will result in a penalty charge, as assessed by management.</p>
+      <p><b>6. Restricted Items &amp; Activities</b><br/>Pets, smoking, and alcohol consumption are strictly prohibited.</p>
+      <p><b>7. Age Restriction</b><br/>⚠️ Event bookings are strictly for adults only (18+).</p>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH OVERLAY: password reset / invite acceptance for the venue owner.
+     Hidden by default — only appears if the URL contains #recovery_token=
+     or #invite_token=, i.e. only right after clicking a Netlify Identity
+     email link. Talks to Netlify's REST API directly (no iframe popup). -->
+<div class="auth-modal" id="authModal" role="dialog" aria-modal="true" aria-label="Account setup">
+  <div class="auth-box" id="inviteBox">
+    <h3>Welcome!</h3>
+    <p>Set a password to finish setting up your admin account.</p>
+    <input type="password" id="invitePassword" class="auth-input" placeholder="Choose a password (min 6 characters)"/>
+    <input type="password" id="invitePasswordConfirm" class="auth-input" placeholder="Confirm password"/>
+    <button class="auth-btn" id="inviteBtn" onclick="submitInvitePassword()">Set Password &amp; Continue</button>
+    <div id="inviteStatus" class="auth-status"></div>
+  </div>
+  <div class="auth-box" id="resetBox">
+    <h3>Reset your password</h3>
+    <p>Choose a new password for your admin account.</p>
+    <input type="password" id="resetPassword" class="auth-input" placeholder="New password (min 6 characters)"/>
+    <input type="password" id="resetPasswordConfirm" class="auth-input" placeholder="Confirm new password"/>
+    <button class="auth-btn" id="resetBtn" onclick="submitNewPassword()">Set New Password</button>
+    <div id="resetStatus" class="auth-status"></div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)" aria-label="Previous photo">‹</button>
+  <img id="lightboxImg" src="" alt="Venue photo"/>
+  <div class="lb-meta">
+    <div class="lb-title" id="lbTitle"></div>
+    <div class="lb-count" id="lightboxCount"></div>
+  </div>
+  <div class="lb-actions">
+    <button class="lb-book" onclick="bookThisSetup()">🎉 Book this setup</button>
+    <button class="lb-ref" id="lbSelectBtn" onclick="toggleSelectFromLightbox()">📎 Use as reference</button>
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)" aria-label="Next photo">›</button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+  const PHONE = "917200369191";
+
+  // ── PROMO BANNER ── (auto-calculates current & next month; rolls over year correctly)
+  function getBookingMonthsText() {
+    const now = new Date();
+    const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    return `🎉 Now accepting bookings for ${monthNames[now.getMonth()]} & ${monthNames[(now.getMonth() + 1) % 12]} — WhatsApp us to reserve your date!`;
+  }
+  const PROMO_MESSAGES = [
+    getBookingMonthsText(),
+    "🎈 1800+ celebrations hosted and counting",
+    "📞 Call or WhatsApp for live availability",
+    "✨ Budget-friendly packages · Beautiful décor · Full coordination included",
+  ];
+  const promoTrack = document.getElementById("promoTrack");
+  const promoHTML = PROMO_MESSAGES.map((m) => `<span>${m}</span>`).join('<span class="dot">&nbsp;&nbsp;•&nbsp;&nbsp;</span>');
+  promoTrack.innerHTML = promoHTML + '<span class="dot">&nbsp;&nbsp;•&nbsp;&nbsp;</span>' + promoHTML;
+
+  // TODO: update to the real domain once it's live
+  const SITE_URL = "https://demosecretvenue.netlify.app/";
+
+  // ── GALLERY IMAGES (GitHub flat-file manifest) ──
+  const GITHUB_OWNER  = "keymeat2025";
+  const GITHUB_REPO   = "demosecretvenue";
+  const GITHUB_BRANCH = "main";
+  const MANIFEST_URL  = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/manifest.json`;
+
+  const FALLBACK_IMAGES = [
+    { id: "fb-1", url: "https://images.pexels.com/photos/7548036/pexels-photo-7548036.jpeg?auto=compress&cs=tinysrgb&w=600", label: "Screen 1", addedAt: "2026-05-14" },
+    { id: "fb-2", url: "https://images.pexels.com/photos/6666644/pexels-photo-6666644.jpeg?auto=compress&cs=tinysrgb&w=600", label: "Screen 1", addedAt: "2026-05-20" },
+    { id: "fb-3", url: "https://images.pexels.com/photos/7867641/pexels-photo-7867641.jpeg?auto=compress&cs=tinysrgb&w=600", label: "Screen 2", addedAt: "2026-06-02" },
+    { id: "fb-4", url: "https://images.pexels.com/photos/2833037/pexels-photo-2833037.jpeg?auto=compress&cs=tinysrgb&w=600", label: "Screen 2", addedAt: "2026-06-10" },
+    { id: "fb-5", url: "https://images.pexels.com/photos/11160491/pexels-photo-11160491.jpeg?auto=compress&cs=tinysrgb&w=600", label: "Terrace", addedAt: "2026-06-18" },
+    { id: "fb-6", url: "https://images.pexels.com/photos/5801307/pexels-photo-5801307.jpeg?auto=compress&cs=tinysrgb&w=600", label: "Terrace", addedAt: "2026-06-25" },
+    { id: "fb-7", url: "https://images.pexels.com/photos/8015160/pexels-photo-8015160.jpeg?auto=compress&cs=tinysrgb&w=600", label: "Car Surprise", addedAt: "2026-07-01" },
+    { id: "fb-8", url: "https://images.pexels.com/photos/12178530/pexels-photo-12178530.jpeg?auto=compress&cs=tinysrgb&w=600", label: "Car Surprise", addedAt: "2026-07-03" },
+  ];
+
+  let GALLERY_IMAGES = FALLBACK_IMAGES;
+  let activeFilter = "All";
+
+  // ── SPACES (Screen 1 / Screen 2 / Terrace / Car Surprise) ──
+  // A photo's "label" field (set via the Space dropdown in admin.html) now
+  // IS its space — one tag, one source of truth, driving both the gallery
+  // filter and the badge shown on each photo card. Existing photos uploaded
+  // before this change carry old occasion labels (Birthday, Anniversary,
+  // etc.) and won't match any space filter until re-tagged via admin.html —
+  // they'll still show under "All" in the meantime.
+  const SPACES = [
+    { key: "Screen 1", icon: "🎬" },
+    { key: "Screen 2", icon: "🎥" },
+    { key: "Terrace", icon: "🌇" },
+    { key: "Car Surprise", icon: "🚗" },
+  ];
+  const OCCASION_ICONS = {
+    "Birthday Party": "🎂", "Bride to Be": "👰", "Groom to Be": "🤵",
+    "Anniversary": "💍", "Get-together": "🧑‍🤝‍🧑", "Romantic Terrace Surprise": "🌇",
+    "Car Surprise": "🚗", "Romantic Date": "🌹", "Surprise Party": "🎊",
+  };
+  const SPACE_OCCASIONS = {
+    "Screen 1": ["Birthday Party", "Bride to Be", "Groom to Be", "Anniversary", "Get-together", "Romantic Date", "Surprise Party"],
+    "Screen 2": ["Birthday Party", "Bride to Be", "Groom to Be", "Anniversary", "Get-together", "Romantic Date", "Surprise Party"],
+    "Terrace": ["Romantic Terrace Surprise", "Romantic Date", "Anniversary", "Surprise Party"],
+    "Car Surprise": ["Car Surprise"],
+  };
+  function spaceIcon(label) {
+    return SPACES.find((s) => s.key === label)?.icon || "✨";
+  }
+
+  async function loadGalleryImages() {
+    try {
+      const res = await fetch(MANIFEST_URL + "?t=" + Date.now()); // cache-bust
+      if (!res.ok) throw new Error("no manifest yet");
+      const data = await res.json();
+      if (data.photos && data.photos.length > 0) {
+        GALLERY_IMAGES = data.photos.map((p) => ({ id: p.id, url: p.url, label: p.label || "Photo", addedAt: p.addedAt }));
+      }
+    } catch (e) { /* silently fall back to stock photos */ }
+    renderFilters();
+    renderGallery();
+    renderFilmstrip();
+    setHeroPhoto();
+    applyRefsFromUrl();
+    renderSpaceTabs();
+  }
+
+  // ── HERO BACKDROP SLIDESHOW ──
+  // Crossfades between the most recent gallery photos every few seconds.
+  // Each image is preloaded before it's shown (no flash of empty background),
+  // the rotation pauses while the tab is hidden, and it stays on a single
+  // static image for users who prefer reduced motion.
+  const HERO_INTERVAL_MS = 7000;
+  const heroLayers = [document.getElementById("heroPhotoA"), document.getElementById("heroPhotoB")];
+  let heroImgs = [], heroIdx = -1, heroActiveLayer = 0, heroTimer = null;
+
+  // The gallery serves 600px-wide thumbnails, which look blurry stretched
+  // across a full-screen hero. This swaps in a high-res version sized for the
+  // actual screen INCLUDING pixel density (retina/mobile screens need 2–3x),
+  // for known providers (Pexels); other URLs pass through as-is.
+  function heroRes(url) {
+    try {
+      const u = new URL(url);
+      if (u.hostname.includes("pexels.com")) {
+        const px = Math.round(window.innerWidth * Math.min(window.devicePixelRatio || 1, 2));
+        u.searchParams.set("w", String(Math.min(2400, Math.max(1280, px))));
+        return u.toString();
+      }
+    } catch (e) { /* relative or malformed URL — use as-is */ }
+    return url;
+  }
+
+  function setHeroPhoto() {
+    if (!GALLERY_IMAGES.length) return;
+    heroImgs = [...GALLERY_IMAGES].slice(-6).reverse().map((p) => heroRes(p.url)); // most recent 6, full-res
+    showHeroSlide(0);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (heroImgs.length > 1 && !reducedMotion && !heroTimer) {
+      heroTimer = setInterval(() => {
+        if (document.hidden) return; // don't churn while the tab is in background
+        showHeroSlide((heroIdx + 1) % heroImgs.length);
+      }, HERO_INTERVAL_MS);
+    }
+  }
+
+  // Dip-free crossfade: the new image fades in ON TOP of the old one (which
+  // stays fully visible underneath). Only after the fade completes does the
+  // old layer get hidden — so the backdrop never darkens mid-transition.
+  let heroCleanupTimer = null;
+  function showHeroSlide(i) {
+    const img = new Image();
+    img.onload = () => {
+      heroIdx = i;
+      const incoming = heroLayers[1 - heroActiveLayer];
+      const outgoing = heroLayers[heroActiveLayer];
+      incoming.style.backgroundImage = `url(${heroImgs[i]})`;
+      incoming.style.zIndex = "0";
+      outgoing.style.zIndex = "-1";
+      incoming.classList.add("show");
+      clearTimeout(heroCleanupTimer);
+      heroCleanupTimer = setTimeout(() => outgoing.classList.remove("show"), 2400);
+      heroActiveLayer = 1 - heroActiveLayer;
+    };
+    img.src = heroImgs[i];
+  }
+
+  // ── FILMSTRIP ──
+  function renderFilmstrip() {
+    const strip = document.getElementById("filmstrip");
+    strip.innerHTML = "";
+    const photos = [...GALLERY_IMAGES].slice(-10).reverse();
+    [...photos, ...photos].forEach((photo, i) => {
+      const p = document.createElement("div");
+      p.className = "polaroid";
+      p.setAttribute("role", "button");
+      p.innerHTML = `<img src="${photo.url}" loading="lazy" alt="${photo.label} celebration"/><span class="p-label">${photo.label}</span>`;
+      p.onclick = () => openLightbox(GALLERY_IMAGES.findIndex((x) => x.id === photo.id));
+      strip.appendChild(p);
+    });
+    ["mouseenter","touchstart"].forEach(ev => strip.addEventListener(ev, () => strip.classList.add("paused"), { passive: true }));
+    ["mouseleave","touchend"].forEach(ev => strip.addEventListener(ev, () => strip.classList.remove("paused"), { passive: true }));
+  }
+
+  // ── GALLERY FILTERS + GRID ──
+  function renderFilters() {
+    const row = document.getElementById("filterRow");
+    row.innerHTML = "";
+    const labels = ["All", ...SPACES.map((s) => s.key)];
+    labels.forEach((label) => {
+      const btn = document.createElement("button");
+      btn.className = "filter-chip" + (label === activeFilter ? " active" : "");
+      btn.setAttribute("role", "tab");
+      const icon = label === "All" ? "✨" : (SPACES.find((s) => s.key === label)?.icon || "✨");
+      btn.innerHTML = `${icon} ${label}`;
+      btn.onclick = () => { activeFilter = label; renderFilters(); renderGallery(); };
+      row.appendChild(btn);
+    });
+  }
+
+  function renderGallery() {
+    const grid = document.getElementById("galleryGrid");
+    const empty = document.getElementById("galleryEmpty");
+    grid.innerHTML = "";
+    const photos = activeFilter === "All" ? GALLERY_IMAGES : GALLERY_IMAGES.filter((p) => p.label === activeFilter);
+    empty.style.display = photos.length ? "none" : "block";
+    photos.forEach((photo) => {
+      const card = document.createElement("div");
+      card.className = "g-card" + (isSelected(photo.id) ? " selected" : "");
+      card.setAttribute("role", "button");
+      card.innerHTML = `
+        <img src="${photo.url}" loading="lazy" alt="${photo.label} setup at The Secret Venue"/>
+        <span class="g-tag">${spaceIcon(photo.label)} ${photo.label}</span>
+        <span class="g-check">✓</span>`;
+      card.onclick = () => openLightbox(GALLERY_IMAGES.findIndex((p) => p.id === photo.id));
+      grid.appendChild(card);
+    });
+  }
+
+  // ── PHOTO REFERENCE SELECTION ──
+  // Selected photos get added to the WhatsApp message as a link back to this page
+  // (WhatsApp click-to-chat links can only carry text, never an attachment).
+  const MAX_REFS = 3;
+  let selectedPhotos = [];
+
+  function isSelected(id) { return selectedPhotos.some((p) => p.id === id); }
+
+  function togglePhoto(photo) {
+    const idx = selectedPhotos.findIndex((p) => p.id === photo.id);
+    if (idx >= 0) selectedPhotos.splice(idx, 1);
+    else {
+      if (selectedPhotos.length >= MAX_REFS) { showToast(`You can attach up to ${MAX_REFS} reference photos`); return; }
+      selectedPhotos.push(photo);
+      showToast("📎 Added as reference — it'll be in your WhatsApp message");
+    }
+    renderGallery();
+    renderRefStrip();
+    updatePreview();
+  }
+
+  function renderRefStrip() {
+    const strip = document.getElementById("refStrip");
+    strip.innerHTML = "";
+    selectedPhotos.forEach((p) => {
+      const chip = document.createElement("div");
+      chip.className = "ref-chip";
+      chip.innerHTML = `<img src="${p.url}" alt=""/>${p.label}<button onclick="removeRef('${p.id}')" aria-label="Remove reference">✕</button>`;
+      strip.appendChild(chip);
+    });
+    strip.classList.toggle("show", selectedPhotos.length > 0);
+  }
+  function removeRef(id) {
+    selectedPhotos = selectedPhotos.filter((p) => p.id !== id);
+    renderGallery(); renderRefStrip(); updatePreview();
+  }
+
+  // The first selected photo's direct image link triggers a real thumbnail preview
+  // in WhatsApp; the page link (with auto-highlight) covers the rest.
+  function refLinesForMessage() {
+    if (selectedPhotos.length === 0) return "";
+    const labels = selectedPhotos.map((p) => p.label).join(", ");
+    const ids = selectedPhotos.map((p) => encodeURIComponent(p.id)).join(",");
+    const viewLink = `${SITE_URL}?refs=${ids}`;
+    const firstPhotoShortUrl = `${SITE_URL}p/${encodeURIComponent(selectedPhotos[0].id)}`;
+    let out = `\n\n📎 Reference photo${selectedPhotos.length > 1 ? "s" : ""} (${labels}):\n${firstPhotoShortUrl}`;
+    if (selectedPhotos.length > 1) out += `\n\nSee all ${selectedPhotos.length} selected: ${viewLink}`;
+    return out;
+  }
+
+  // If opened via "?refs=id1,id2" (e.g. from a WhatsApp message), highlight & open those photos
+  function applyRefsFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const refs = params.get("refs");
+    if (!refs) return;
+    const ids = refs.split(",");
+    const matches = GALLERY_IMAGES.filter((p) => ids.includes(p.id));
+    if (matches.length === 0) return;
+    selectedPhotos = matches;
+    renderGallery(); renderRefStrip();
+    openLightbox(GALLERY_IMAGES.findIndex((p) => p.id === matches[0].id));
+  }
+
+  // ── LIGHTBOX ──
+  let lbIndex = 0;
+  function openLightbox(i) {
+    if (i < 0) return;
+    lbIndex = i;
+    renderLightboxView();
+    document.getElementById("lightbox").classList.add("show");
+  }
+  function closeLightbox() { document.getElementById("lightbox").classList.remove("show"); }
+  function navLightbox(dir) {
+    lbIndex = (lbIndex + dir + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
+    renderLightboxView();
+  }
+  function renderLightboxView() {
+    const photo = GALLERY_IMAGES[lbIndex];
+    document.getElementById("lightboxImg").src = photo.url;
+    document.getElementById("lbTitle").textContent = photo.label;
+    document.getElementById("lightboxCount").textContent = (lbIndex + 1) + " / " + GALLERY_IMAGES.length;
+    const btn = document.getElementById("lbSelectBtn");
+    const sel = isSelected(photo.id);
+    btn.textContent = sel ? "✓ Added as reference" : "📎 Use as reference";
+    btn.classList.toggle("selected", sel);
+  }
+  function toggleSelectFromLightbox() {
+    togglePhoto(GALLERY_IMAGES[lbIndex]);
+    renderLightboxView();
+  }
+  // "Book this setup": attach the photo as a reference, pre-select its
+  // space (Car Surprise also auto-selects its one occasion — handled inside
+  // selectSpaceTab), and take the visitor straight to the booking card.
+  function bookThisSetup() {
+    const photo = GALLERY_IMAGES[lbIndex];
+    if (!isSelected(photo.id)) togglePhoto(photo);
+    selPackage = ""; // gallery photos aren't tied to a formal package
+    selectSpaceTab(photo.label);
+    closeLightbox();
+    document.getElementById("book").scrollIntoView({ behavior: "smooth" });
+    showToast(`🎉 ${photo.label} selected — pick your occasion and add your details`);
+  }
+  document.getElementById("lightbox").addEventListener("click", (e) => {
+    if (e.target.id === "lightbox") closeLightbox();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!document.getElementById("lightbox").classList.contains("show")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") navLightbox(1);
+    if (e.key === "ArrowLeft") navLightbox(-1);
+  });
+  // swipe support in lightbox
+  let touchX = null;
+  const lbEl = document.getElementById("lightbox");
+  lbEl.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  lbEl.addEventListener("touchend", (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 48) navLightbox(dx < 0 ? 1 : -1);
+    touchX = null;
+  }, { passive: true });
+
+  // ── BOOKING FORM: SPACE TABS + FILTERED OCCASIONS (combined Step 1) ──
+  const GUESTS = ["1–5", "6–10", "11–20"];
+  let selOccasion = "";
+  let selPackage = "";
+  let selGuests   = "";
+  let selSpace = "";
+
+  function renderSpaceTabs() {
+    const row = document.getElementById("spaceTabRow");
+    if (!row) return;
+    row.innerHTML = SPACES.map((s) => `<button type="button" class="space-tab" data-space="${s.key}">${s.icon} ${s.key}</button>`).join("");
+    row.querySelectorAll(".space-tab").forEach((btn) => {
+      btn.onclick = () => selectSpaceTab(btn.dataset.space);
+    });
+    // Default to the first space so a photo preview and matching occasions
+    // are visible immediately — nothing to click just to see something.
+    if (!selSpace) selectSpaceTab(SPACES[0].key);
+  }
+
+  function selectSpaceTab(spaceKey) {
+    selSpace = spaceKey;
+    document.querySelectorAll(".space-tab").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.space === spaceKey);
+    });
+    renderSpacePreview(spaceKey);
+    selPackage = "";
+    if (spaceKey === "Car Surprise") {
+      // Only one occasion applies here — it IS the occasion, so it's
+      // selected automatically instead of requiring a redundant tap.
+      renderOccasionChips(SPACE_OCCASIONS[spaceKey]);
+      selectOccasion("Car Surprise");
+    } else {
+      selOccasion = "";
+      document.getElementById("stepOccasion").classList.remove("done");
+      renderOccasionChips(SPACE_OCCASIONS[spaceKey] || []);
+      updatePreview();
+    }
+  }
+
+  function renderSpacePreview(spaceKey) {
+    const strip = document.getElementById("spacePreviewStrip");
+    if (!strip) return;
+    const photos = GALLERY_IMAGES.filter((p) => p.label === spaceKey).slice(0, 4);
+    if (photos.length === 0) {
+      strip.innerHTML = `<div class="space-preview-empty">Photos for ${spaceKey} coming soon</div>`;
+      return;
+    }
+    strip.innerHTML = photos.map((p) => `<img src="${p.url}" loading="lazy" alt="${spaceKey}"/>`).join("");
+    strip.querySelectorAll("img").forEach((img, i) => {
+      img.onclick = () => openLightbox(GALLERY_IMAGES.findIndex((p) => p.id === photos[i].id));
+    });
+  }
+
+  function renderOccasionChips(labels) {
+    const grid = document.getElementById("serviceGrid");
+    grid.innerHTML = "";
+    labels.forEach((label) => {
+      const b = document.createElement("button");
+      b.className = "chip";
+      b.dataset.label = label;
+      b.innerHTML = `<span class="ci">${OCCASION_ICONS[label] || "✨"}</span>${label}`;
+      b.onclick = () => { selPackage = ""; selectOccasion(label); };
+      grid.appendChild(b);
+    });
+  }
+
+  function selectOccasion(label) {
+    selOccasion = label;
+    document.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.label === label));
+    document.getElementById("stepOccasion").classList.add("done");
+    updatePreview();
+  }
+
+  // ── PACKAGES (inclusions only — pricing is confirmed live on WhatsApp,
+  // since it varies by date/season and the owner prefers not to fix it
+  // publicly on the site) ──
+  const PACKAGES = [
+    {
+      icon: "🎬", name: "Screen 1 & Screen 2", tag: "1 hour · up to 10 guests",
+      includes: ["Welcome drink", "Half kg cake", "Decoration", "10 polaroid photos", "Private room", "OTT platform", "Photo & videography (additional charge)"],
+      subheading: "For couples (2–4 guests)",
+      subIncludes: ["Artificial flower backdrop", "Complimentary photo & video (no extra charge)"],
+      note: "Need extra time? Just ask us on WhatsApp",
+    },
+    {
+      icon: "🌹", name: "Terrace Romantic Setup", tag: "1 hour",
+      includes: ["Half kg cake", "10 photo prints", "Terrace setup", "Music speaker", "2–4 photo entry", "2 fire shots", "Reel video edit"],
+    },
+    {
+      icon: "🚗", name: "Car Surprise", tag: "Surprise setup, ready to drive off with",
+      includes: ["Half kg cake", "Music speaker", "2 photo entry", "20 photo prints", "Car decoration setup", "Photo & videography", "1 reel edit", "Bouquet (complimentary)"],
+    },
+  ];
+
+  function renderPackages() {
+    const grid = document.getElementById("packageGrid");
+    grid.innerHTML = "";
+    PACKAGES.forEach((pkg) => {
+      const card = document.createElement("div");
+      card.className = "package-card reveal";
+      card.innerHTML = `
+        <div class="package-head">
+          <div class="package-icon">${pkg.icon}</div>
+          <div>
+            <h3>${pkg.name}</h3>
+            <div class="package-tag">${pkg.tag}</div>
+          </div>
+        </div>
+        <ul class="package-list">${pkg.includes.map((i) => `<li>${i}</li>`).join("")}</ul>
+        ${pkg.subheading ? `
+          <div class="package-subheading">${pkg.subheading}</div>
+          <ul class="package-list">${pkg.subIncludes.map((i) => `<li>${i}</li>`).join("")}</ul>` : ""}
+        ${pkg.note ? `<div class="package-note">${pkg.note}</div>` : ""}
+        <span class="package-ask">Ask for current pricing</span>`;
+      grid.appendChild(card);
+      revealObserver.observe(card);
+    });
+  }
+
+  // ── ADD-ONS (name + short description, no prices — same reasoning as
+  // packages: pricing is confirmed live on WhatsApp, not fixed on-site) ──
+  const ADDONS = [
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3v18M4.9 7.5l14.2 9M19.1 7.5L4.9 16.5"/><path d="M12 3l-2 2M12 3l2 2M12 21l-2-2M12 21l2-2M4.9 7.5l.3-2.7M4.9 7.5l-2.6.8M19.1 7.5l-.3-2.7M19.1 7.5l2.6.8M4.9 16.5l.3 2.7M4.9 16.5l-2.6-.8M19.1 16.5l-.3 2.7M19.1 16.5l2.6-.8"/></svg>`, bg: "#DBEAFE", fg: "#2563EB", title: "Snow Spray", desc: "Add a magical snow effect to make your entrance unforgettable." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12l-8 8-9-9V4h7z"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor" stroke="none"/></svg>`, bg: "#FEF3C7", fg: "#B45309", title: "Personalized Tag", desc: "A custom name tag to make the celebration uniquely yours." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.3c1.4 1.8 1.4 2.7 0 3.7-1.4-1-1.4-1.9 0-3.7z" fill="currentColor" stroke="none"/><rect x="9" y="7" width="6" height="14" rx="1"/><path d="M9 11h6"/></svg>`, bg: "#FFEDD5", fg: "#C2410C", title: "Photo Candle", desc: "Light up the moment with a personalized photo candle." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v13"/><path d="M12 9c-2-4-8-4-8 0s4 5 8 3"/><path d="M12 9c2-4 8-4 8 0s-4 5-8 3"/><path d="M12 13.5c-1.5-2-6-2-6 1.3s3 3.7 6 1.8"/><path d="M12 13.5c1.5-2 6-2 6 1.3s-3 3.7-6 1.8"/></svg>`, bg: "#FCE7F3", fg: "#BE185D", title: "Kids Butterfly Wings", desc: "Adorable wings to make your little one's celebration extra special." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="2.2"/><circle cx="14.5" cy="6" r="1.9"/><circle cx="16" cy="10.3" r="1.9"/><circle cx="10.5" cy="10.7" r="1.9"/><path d="M12 12.3L9.3 21"/><path d="M12 12.3l2.7 8.7"/></svg>`, bg: "#FFE4E6", fg: "#E11D48", title: "Bouquet", desc: "A fresh flower bouquet to elevate your celebration." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2c2 1.1 3 2.9 3 4.6 0 1.8-1.3 3-3 3s-3-1.2-3-3c0-1.7 1-3.5 3-4.6z"/><path d="M12 10.8c-3 0-5 1.9-5 4.2"/><path d="M12 10.8c3 0 5 1.9 5 4.2"/><path d="M12 10.8v10"/></svg>`, bg: "#FEE2E2", fg: "#DC2626", title: "Rose Entry", desc: "Make a grand entrance surrounded by fresh roses." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4c1.3.7 2 1.8 2 3s-.9 2-2 2-2-.9-2-2 .7-2.3 2-3z"/><path d="M8 9v11"/><path d="M16.3 7.6c1 1.4 1 2.1 0 2.9-1-.8-1-1.5 0-2.9z" fill="currentColor" stroke="none"/><rect x="14.3" y="10.5" width="4" height="9.5" rx="0.8"/></svg>`, bg: "#FDE68A", fg: "#92400E", title: "Rose + Candle Entry", desc: "Combine roses and candlelight for a dreamy entrance." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="9" r="3"/><circle cx="15.2" cy="7.2" r="2.1"/><circle cx="14" cy="15" r="3.4"/><circle cx="7.3" cy="16.3" r="1.6"/></svg>`, bg: "#E0F2FE", fg: "#0891B2", title: "Bubble Entry", desc: "Step into your celebration through a shower of bubbles." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.1 4.4 4.9.7-3.5 3.5.8 4.9L12 14.2l-4.3 2.3.8-4.9-3.5-3.5 4.9-.7z"/><path d="M8.5 21h7M12 16.9V21"/></svg>`, bg: "#EDE9FE", fg: "#6D28D9", title: "Premium Stand", desc: "Elevate your setup with a premium display stand." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2.2"/><circle cx="8.3" cy="9.3" r="1.4"/><path d="M21 15.2l-5.4-4.9-9.6 8"/></svg>`, bg: "#DCFCE7", fg: "#15803D", title: "Photo Entry", desc: "Walk in through a wall of your favourite memories." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 15a3.5 3.5 0 010-7 5 5 0 019.7-1.5A4 4 0 0118 15z"/><path d="M4 19h16M6 22h12"/></svg>`, bg: "#E2E8F0", fg: "#475569", title: "Fog Entry", desc: "Make a grand entrance with our stunning fog effect." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6.3" r="3"/><path d="M6 21v-3a6 6 0 0112 0v3"/></svg>`, bg: "#CCFBF1", fg: "#0F766E", title: "Kids Cutout", desc: "Fun cutout standees to make kids' celebrations extra special." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3.2"/><path d="M9 10.3c-1.4 1-1.8 2.9-1.8 4.7h9.6c0-1.8-.4-3.7-1.8-4.7"/><path d="M9 20h6"/></svg>`, bg: "#FBCFE8", fg: "#9D174D", title: "Baby Cutout Pillar (×4)", desc: "Adorable pillar cutouts to theme a baby's celebration." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 5v14M16 5v14M3 9h5M16 9h5M3 15h5M16 15h5"/></svg>`, bg: "#E0E7FF", fg: "#4338CA", title: "Extra Reel Edit", desc: "Get an additional edited reel to relive the moment." },
+    { icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9h12l2 7a2.5 2.5 0 01-4.5 1.8L14 16h-4l-1.5 1.8A2.5 2.5 0 014 16z"/><path d="M8 11v3M6.5 12.5h3M16.2 11.4h.01M18.6 13h.01"/></svg>`, bg: "#ECFCCB", fg: "#4D7C0F", title: "PS4 Games", desc: "Add some playtime with PS4 games during your private theatre session." },
+  ];
+
+  let selAddons = [];
+
+  // ── IN-FORM ADD-ONS PICKER (always visible, multi-select) ──
+
+  function renderAddonChips() {
+    const grid = document.getElementById("addonChipGrid");
+    if (!grid) return;
+    grid.innerHTML = "";
+    ADDONS.forEach((a) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "addon-chip-btn";
+      btn.innerHTML = `<span class="ci" style="color:${a.fg};">${a.icon}</span>${a.title}`;
+      btn.onclick = () => {
+        const idx = selAddons.indexOf(a.title);
+        if (idx >= 0) { selAddons.splice(idx, 1); btn.classList.remove("active"); }
+        else { selAddons.push(a.title); btn.classList.add("active"); }
+        updatePreview();
+      };
+      grid.appendChild(btn);
+    });
+  }
+
+  const guestRow = document.getElementById("guestRow");
+  GUESTS.forEach(g => {
+    const b = document.createElement("button");
+    b.className = "guest-btn";
+    b.textContent = g;
+    b.onclick = () => {
+      document.querySelectorAll(".guest-btn").forEach(x => x.classList.remove("active"));
+      b.classList.add("active");
+      selGuests = g;
+      document.getElementById("stepGuests").classList.add("done");
+      updatePreview();
+    };
+    guestRow.appendChild(b);
+  });
+
+  ["custName","eventDate","eventTime","specialReq"].forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener("input", updatePreview);
+    el.addEventListener("change", updatePreview);
+  });
+
+  function fmt(d) {
+    if (!d) return "";
+    const dt = new Date(d + "T00:00:00");
+    return dt.toLocaleDateString("en-IN", { weekday:"short", day:"numeric", month:"short", year:"numeric" });
+  }
+
+  function buildMessage(name, date, time, special) {
+    let msg = `Hi The Secret Venue! 🎭\nI'd like to book for *${selOccasion || "an event"}*`;
+    if (selSpace)   msg += `\n🏛️ Space: ${selSpace}`;
+    if (selPackage) msg += `\n📦 Package: ${selPackage}`;
+    if (name)      msg += `\n\n👤 Name: ${name}`;
+    if (selGuests) msg += `\n👥 Guests: ${selGuests}`;
+    if (date)      msg += `\n📅 Date: ${fmt(date)}`;
+    if (time)      msg += `\n🕐 Time: ${time}`;
+    if (special)   msg += `\n✨ Special: ${special}`;
+    if (selAddons.length > 0) msg += `\n🎁 Add-ons: ${selAddons.join(", ")}`;
+    msg += refLinesForMessage();
+    msg += `\n\nKindly confirm availability. Thank you! 🎉`;
+    return msg;
+  }
+
+  function updatePreview() {
+    const name    = document.getElementById("custName").value.trim();
+    const date    = document.getElementById("eventDate").value;
+    const time    = document.getElementById("eventTime").value;
+    const special = document.getElementById("specialReq").value.trim();
+    const box     = document.getElementById("preview");
+    if (!name && !selOccasion) { box.classList.remove("show"); return; }
+    document.getElementById("previewText").textContent = buildMessage(name, date, time, special);
+    box.classList.add("show");
+    if (name && date && time) document.getElementById("stepDetails").classList.add("done");
+  }
+
+  // Gentle inline validation: highlight + scroll to the first missing thing (no alert boxes)
+  function flagError(el, wrapId, message) {
+    if (wrapId) document.getElementById(wrapId).classList.add("error");
+    showToast(message);
+    (el || document.getElementById(wrapId)).scrollIntoView({ behavior: "smooth", block: "center" });
+    if (el && el.focus) setTimeout(() => el.focus({ preventScroll: true }), 350);
+  }
+  ["fName","fDate","fTime"].forEach(id => {
+    const wrap = document.getElementById(id);
+    wrap.querySelector("input, select").addEventListener("input", () => wrap.classList.remove("error"));
+    wrap.querySelector("input, select").addEventListener("change", () => wrap.classList.remove("error"));
+  });
+  document.getElementById("termsCheck").addEventListener("change", () => {
+    document.getElementById("termsRow").classList.remove("error");
+  });
+
+  function book() {
+    const nameEl = document.getElementById("custName");
+    const dateEl = document.getElementById("eventDate");
+    const timeEl = document.getElementById("eventTime");
+    const name    = nameEl.value.trim();
+    const date    = dateEl.value;
+    const time    = timeEl.value;
+    const special = document.getElementById("specialReq").value.trim();
+
+    if (!selOccasion) { flagError(document.getElementById("stepOccasion"), null, "Pick an occasion first 🎉"); return; }
+    if (!name)        { flagError(nameEl, "fName", "Please tell us your name"); return; }
+    if (!date)        { flagError(dateEl, "fDate", "Please pick your event date"); return; }
+    if (!time)        { flagError(timeEl, "fTime", "Please choose a time slot"); return; }
+    if (!document.getElementById("termsCheck").checked) {
+      document.getElementById("termsRow").classList.add("error");
+      showToast("Please agree to the Terms & Conditions");
+      document.getElementById("termsRow").scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    fireConfetti();
+    window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(buildMessage(name, date, time, special))}`, "_blank");
+  }
+
+  // min date = today
+  document.getElementById("eventDate").min = new Date().toISOString().split("T")[0];
+
+  // ── TERMS MODAL ──
+  function openTerms(e) { if (e) e.preventDefault(); document.getElementById("termsModal").classList.add("show"); }
+  function closeTerms() { document.getElementById("termsModal").classList.remove("show"); }
+  document.getElementById("termsModal").addEventListener("click", (e) => {
+    if (e.target.id === "termsModal") closeTerms();
+  });
+
+  // ── TOAST ──
+  let toastTimer;
+  function showToast(msg) {
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove("show"), 2600);
+  }
+
+  // ── STICKY MOBILE BAR ── (appears after hero; hides while the booking card is on screen)
+  const stickyBar = document.getElementById("stickyBar");
+  let heroPassed = false, bookVisible = false;
+  function updateStickyBar() {
+    stickyBar.classList.toggle("show", heroPassed && !bookVisible && window.innerWidth < 900);
+  }
+  new IntersectionObserver(([e]) => { heroPassed = !e.isIntersecting; updateStickyBar(); }, { threshold: 0.1 })
+    .observe(document.querySelector(".hero"));
+  new IntersectionObserver(([e]) => { bookVisible = e.isIntersecting; updateStickyBar(); }, { threshold: 0.15 })
+    .observe(document.getElementById("book"));
+  window.addEventListener("resize", updateStickyBar);
+
+  // ── MOBILE HAMBURGER MENU ──
+  function toggleMobileMenu() {
+    const open = document.getElementById("hamburgerBtn").classList.toggle("open");
+    document.getElementById("mobMenu").classList.toggle("show", open);
+    document.getElementById("hamburgerBtn").setAttribute("aria-expanded", String(open));
+  }
+  function closeMobileMenu() {
+    document.getElementById("hamburgerBtn").classList.remove("open");
+    document.getElementById("mobMenu").classList.remove("show");
+    document.getElementById("hamburgerBtn").setAttribute("aria-expanded", "false");
+  }
+  document.addEventListener("click", (e) => {
+    const menu = document.getElementById("mobMenu");
+    const btn = document.getElementById("hamburgerBtn");
+    if (menu.classList.contains("show") && !menu.contains(e.target) && !btn.contains(e.target)) closeMobileMenu();
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMobileMenu(); });
+
+  // ── SCROLL REVEALS ──
+  const revealEls = document.querySelectorAll(".reveal");
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.add("in-view"); revealObserver.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach((el) => revealObserver.observe(el));
+
+  // Packages render here (not earlier) because renderPackages() needs
+  // revealObserver, which is only just defined above.
+  renderPackages();
+  renderAddonChips();
+
+  // ── LIVE VELLORE CLOCK ──
+  const vlrClockEl = document.getElementById("vlrClock");
+  if (vlrClockEl) {
+    function updateVlrClock() {
+      vlrClockEl.textContent = new Date().toLocaleTimeString("en-IN", {
+        timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: true,
+      });
+    }
+    updateVlrClock();
+    setInterval(updateVlrClock, 30000);
+  }
+
+  // ── CONFETTI (fired when a booking is sent) ──
+  function fireConfetti() {
+    const colors = ["#F2B33D", "#FFD98A", "#F0567A", "#8B5CF6", "#25D366", "#fff"];
+    for (let i = 0; i < 60; i++) {
+      const p = document.createElement("div");
+      p.className = "confetti-piece";
+      const size = 6 + Math.random() * 6;
+      p.style.cssText = `
+        left:${Math.random()*100}vw; width:${size}px; height:${size*0.4}px;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        animation-duration:${2.2 + Math.random()*1.6}s;
+        animation-delay:${Math.random()*0.3}s;`;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 4200);
+    }
+  }
+
+  // ── FLOATING CALL POPOVER (tap-to-toggle for touch) ──
+  function toggleCallPopover(e) {
+    e.stopPropagation();
+    document.getElementById("fcCallPopover").classList.toggle("show");
+  }
+  document.addEventListener("click", (e) => {
+    const popover = document.getElementById("fcCallPopover");
+    const group = document.getElementById("fcCallGroup");
+    if (popover && popover.classList.contains("show") && !group.contains(e.target)) popover.classList.remove("show");
+  });
+
+  // Robust copy helper: Clipboard API → execCommand fallback
+  function copyTextToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).catch(() => legacyCopy(text));
+    }
+    return legacyCopy(text) ? Promise.resolve() : Promise.reject();
+  }
+  function legacyCopy(text) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  function copyPhoneFloat() {
+    const label = document.getElementById("floatCopyLabel");
+    const original = label.textContent;
+    copyTextToClipboard("+91 72003 69191").then(() => {
+      label.textContent = "Copied ✨";
+      setTimeout(() => { label.textContent = original; }, 1800);
+    }).catch(() => {
+      label.textContent = "Couldn't copy — long-press to select";
+      setTimeout(() => { label.textContent = original; }, 2500);
+    });
+  }
+
+  loadGalleryImages();
+
+  // ── INSTAGRAM: MANIFEST-DRIVEN REELS + LAZY LOAD + SKELETONS ──
+  // Reel URLs live in reels.json on GitHub (same pattern as the photo
+  // gallery's manifest.json) so the owner can add/remove them from
+  // admin.html without any code changes. embed.js (and the iframes it
+  // creates) only load once the section is close to the viewport — no cost
+  // for visitors who never scroll there. A MutationObserver per card hides
+  // that card's skeleton the moment Instagram replaces the blockquote with
+  // a real iframe.
+  const REELS_MANIFEST_URL = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/reels.json`;
+  const FALLBACK_REELS = [
+    { id: "DQqjTgJEmb2", url: "https://www.instagram.com/reel/DQqjTgJEmb2/" },
+    { id: "DQRkqXkCGR_", url: "https://www.instagram.com/reel/DQRkqXkCGR_/" },
+    { id: "DPIykCEEXKM", url: "https://www.instagram.com/reel/DPIykCEEXKM/" },
+    { id: "DTSQRuTCM3W", url: "https://www.instagram.com/reel/DTSQRuTCM3W/" },
+    { id: "DYTtXIQyexj", url: "https://www.instagram.com/reel/DYTtXIQyexj/" },
+  ];
+
+  const igSection = document.getElementById("instagram");
+  let igScriptLoaded = false;
+
+  function watchIgCardForRender(card) {
+    const skeleton = card.querySelector(".ig-skeleton");
+    if (!skeleton) return;
+    const mo = new MutationObserver(() => {
+      if (card.querySelector("iframe")) {
+        skeleton.classList.add("hide");
+        mo.disconnect();
+      }
+    });
+    mo.observe(card, { childList: true, subtree: true });
+  }
+
+  function renderReelCards(reels) {
+    const strip = document.getElementById("igStrip");
+    if (!strip) return;
+    strip.innerHTML = reels.map((r) => `
+      <div class="ig-card">
+        <div class="ig-skeleton"><div class="ig-skel-shimmer"></div></div>
+        <blockquote class="instagram-media" data-instgrm-permalink="${r.url}" data-instgrm-version="14"></blockquote>
+      </div>`).join("");
+    // If embed.js already loaded (section was already in view) by the time
+    // this runs, the newly-created cards need their own observers attached
+    // and Instagram needs telling to scan the page again.
+    if (igScriptLoaded) {
+      strip.querySelectorAll(".ig-card").forEach(watchIgCardForRender);
+      if (window.instgrm) window.instgrm.Embeds.process();
+    }
+  }
+
+  async function loadReelsManifest() {
+    renderReelCards(FALLBACK_REELS); // shown immediately, swapped below if the manifest loads
+    try {
+      const res = await fetch(REELS_MANIFEST_URL + "?t=" + Date.now());
+      if (!res.ok) throw new Error("no reels.json yet");
+      const data = await res.json();
+      if (data.reels && data.reels.length > 0) renderReelCards(data.reels);
+    } catch (e) { /* silently keep the fallback reels */ }
+  }
+
+  function loadInstagramEmbeds() {
+    if (igScriptLoaded) { if (window.instgrm) window.instgrm.Embeds.process(); return; }
+    igScriptLoaded = true;
+    document.querySelectorAll(".ig-card").forEach(watchIgCardForRender);
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.instagram.com/embed.js";
+    document.body.appendChild(script);
+  }
+
+  loadReelsManifest();
+  if (igSection) {
+    new IntersectionObserver((entries, obs) => {
+      if (entries[0].isIntersecting) { loadInstagramEmbeds(); obs.disconnect(); }
+    }, { rootMargin: "300px" }).observe(igSection);
+  }
+</script>
+<script>
+  // ── CUSTOM PASSWORD RESET / INVITE ACCEPTANCE ──
+  // Netlify's recovery/invite emails always link to this project's root
+  // (this page), not to admin.html specifically. Rather than depend on
+  // Netlify's own popup iframe (which wasn't rendering reliably), this talks
+  // to the plain REST API at /.netlify/identity/* directly — same-origin,
+  // no iframe, nothing for a blocker to interfere with. Mirrors the same
+  // logic in admin.html so it works no matter which page the link lands on.
+  const IDENTITY_BASE = "/.netlify/identity";
+
+  function getHashParam(name) {
+    // Deliberately NOT using URLSearchParams here — it treats "+" as a
+    // literal space (form-encoding behavior), which silently corrupts any
+    // token that happens to contain a "+" character before we ever send it
+    // to Netlify. Plain split + decodeURIComponent leaves "+" alone.
+    const hash = window.location.hash.replace(/^#/, "");
+    const pair = hash.split("&").find((kv) => kv.startsWith(name + "="));
+    if (!pair) return null;
+    return decodeURIComponent(pair.slice(name.length + 1));
+  }
+
+  // Grab either token and strip it from the URL immediately, BEFORE
+  // netlifyIdentity.init() runs below — so the widget never sees the hash
+  // and never tries (and fails) to open its own popup for it.
+  const pendingRecoveryToken = getHashParam("recovery_token");
+  const pendingInviteToken = getHashParam("invite_token");
+  if (pendingRecoveryToken || pendingInviteToken) {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
+
+  async function verifyIdentityToken(type, token, password) {
+    const body = { type, token };
+    if (password) body.password = password; // required for invite/signup verification
+    const res = await fetch(`${IDENTITY_BASE}/verify`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      const bodyText = await res.text().catch(() => "");
+      throw new Error(`Server said (${res.status}): ${bodyText || "no details"}`);
+    }
+    return res.json(); // { access_token, user, ... }
+  }
+
+  async function setNewPasswordViaApi(accessToken, password) {
+    const res = await fetch(`${IDENTITY_BASE}/user`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + accessToken,
+      },
+      body: JSON.stringify({ password }),
+    });
+    if (!res.ok) throw new Error("Couldn't set the new password. Please request a new link.");
+    return res.json();
+  }
+
+  async function submitInvitePassword() {
+    const password = document.getElementById("invitePassword").value;
+    const confirmPw = document.getElementById("invitePasswordConfirm").value;
+    const statusEl = document.getElementById("inviteStatus");
+    const btn = document.getElementById("inviteBtn");
+    if (password.length < 6) { statusEl.textContent = "Password must be at least 6 characters."; statusEl.className = "auth-status err"; return; }
+    if (password !== confirmPw) { statusEl.textContent = "Passwords don't match."; statusEl.className = "auth-status err"; return; }
+    btn.disabled = true;
+    statusEl.textContent = "Setting up your account...";
+    statusEl.className = "auth-status";
+    try {
+      // GoTrue's /verify endpoint requires the password to be included in
+      // THIS call for invite/signup tokens — there's no existing account
+      // to authorize a separate password-set request against yet.
+      await verifyIdentityToken("signup", pendingInviteToken, password);
+      statusEl.textContent = "Account ready ✓ Head to admin.html to log in.";
+      statusEl.className = "auth-status ok";
+    } catch (e) {
+      statusEl.textContent = e.message;
+      statusEl.className = "auth-status err";
+    }
+    btn.disabled = false;
+  }
+
+  async function submitNewPassword() {
+    const password = document.getElementById("resetPassword").value;
+    const confirmPw = document.getElementById("resetPasswordConfirm").value;
+    const statusEl = document.getElementById("resetStatus");
+    const btn = document.getElementById("resetBtn");
+    if (password.length < 6) { statusEl.textContent = "Password must be at least 6 characters."; statusEl.className = "auth-status err"; return; }
+    if (password !== confirmPw) { statusEl.textContent = "Passwords don't match."; statusEl.className = "auth-status err"; return; }
+    btn.disabled = true;
+    statusEl.textContent = "Setting new password...";
+    statusEl.className = "auth-status";
+    try {
+      const { access_token } = await verifyIdentityToken("recovery", pendingRecoveryToken);
+      await setNewPasswordViaApi(access_token, password);
+      statusEl.textContent = "Password updated ✓ Head to admin.html to log in.";
+      statusEl.className = "auth-status ok";
+    } catch (e) {
+      statusEl.textContent = e.message;
+      statusEl.className = "auth-status err";
+    }
+    btn.disabled = false;
+  }
+
+  if (pendingInviteToken) {
+    document.getElementById("resetBox").style.display = "none";
+    document.getElementById("authModal").classList.add("show");
+  } else if (pendingRecoveryToken) {
+    document.getElementById("inviteBox").style.display = "none";
+    document.getElementById("authModal").classList.add("show");
+  }
+
+  netlifyIdentity.init();
+</script>
+</body>
+</html>
